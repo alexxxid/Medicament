@@ -3,10 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+              <!-- CSS  -->
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <link href="../public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        {% endblock %}
     </head>
     <body>
+    
+ 
+        
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+              <!--  Scripts-->
+            <script src="../public/js/jquery-3.3.1.js"></script>
+            <script src="../public/js/materialize.js"></script>
+            <script src="../public/js/init.js"></script>
+        {% endblock %}
     </body>
 </html>
