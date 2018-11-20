@@ -2,9 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>
+            {% block title %}Welcome!{% endblock %}
+        </title>
         {% block stylesheets %}
-              <!-- CSS  -->
+            <!-- CSS -->
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
             <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -14,56 +16,56 @@
     <body>
         <nav class="nav-extended blue darken-3 text-white">
             <div class="nav-wrapper">
-            <a href="#" class="brand-logo text-lighten-2">Medicament</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#modal1" class="modal-trigger">Login</a></li>
-            </ul>
+                <a href="#" class="brand-logo text-lighten-2">Medicament</a>
+                <div class="container">
+
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a href="#modal1" class="modal-trigger waves-effect">Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            {# <div class="nav-content">
-              <ul id="tabs-swipe-demo" class="tabs tabs-transparent">
-                <li class="tab col s3"><a href="#swipe-1">Test 1</a></li>
-                <li class="tab col s3"><a class="active" href="#swipe-2">Test 2</a></li>
-                <li class="tab col s3"><a href="#swipe-3">Test 3</a></li>
-            </ul>
-            <div id="swipe-1" class="col s12 blue">First tab content</div>
-            <div id="swipe-2" class="col s12 red">Second tab content</div>
-            <div id="swipe-3" class="col s12 green">Third tab content</div>
-            </div> #}
+
         </nav>
-         <!-- Modal Structure -->
+
+        <!-- Modal Structure -->
         <div id="modal1" class="modal">
-            <div class="modal-content">
+            <div class="modal-content container">
                 <h4>Connexion</h4>
-                 <div class="row">
-    <form class="col s12 container">
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Identifiant" id="first_name" type="text" class="validate">
-          <label for="first_name" class="active">Identifiant</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input placeholder="Mot de passe" id="password" type="password" class="validate">
-          <label for="password" class="active">Mot de passe</label>
-        </div>
-      </div>
-
-    </form>
-  </div>
+                <div class="row">
+                    <form class="col s12 container">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="identifiant" type="text" class="validate">
+                                <label for="identifiant">Identifiant</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="identifiant" type="text" class="validate">
+                                <label for="identifiant">Mot de passe</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-                <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Valider</a>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect blue darken-3 btn">Valider</a>
             </div>
         </div>
 
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
 
-        
-        {% block body %}{% endblock %}
-            
         {% block javascripts %}
-              <!--  Scripts-->
+            <!-- Scripts-->
             <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
             <script src="js/materialize.js"></script>
             <script src="js/init.js"></script>
