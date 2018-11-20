@@ -9,25 +9,37 @@
             <!-- CSS -->
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-            <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
             <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+            <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
         {% endblock %}
     </head>
     <body>
-        <nav class="nav-extended blue darken-3 text-white">
-            <div class="nav-wrapper">
+        <nav class="nav-extended blue darken-3 ">
+            <div class="nav-wrapper ">
                 <a href="#" class="brand-logo text-lighten-2">Medicament</a>
                 <div class="container">
-
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                        <i class="material-icons">menu</i>
-                    </a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {# MENU POUR LES ORDINATEURS #}
+                    <ul class="right hide-on-med-and-down">
                         <li>
                             <a href="#modal1" class="modal-trigger waves-effect">Login</a>
                         </li>
                     </ul>
+                    {#  #}
+
                 </div>
+
+                {# MENU POUR LES TELEPHONES PORTATIFS DE TYPE CELLULAIRE #}
+                <ul id="nav-mobile" class="sidenav">
+                    <li>
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                {#  #}
+
             </div>
 
         </nav>
@@ -35,7 +47,7 @@
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
             <div class="modal-content container">
-                <h4>Connexion</h4>
+                <h4 class="center">Connexion</h4>
                 <div class="row">
                     <form class="col s12 container">
                         <div class="row">
@@ -48,14 +60,21 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">lock</i>
-                                <input id="identifiant" type="text" class="validate">
-                                <label for="identifiant">Mot de passe</label>
+                                <input id="mdp" type="text" class="validate">
+                                <label for="mdp">Mot de passe</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input id="Confirmmdp" type="text" class="validate">
+                                <label for="Confirmmdp">Confirmation mot de passe</label>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="row center">
                 <a href="#!" class="modal-close waves-effect blue darken-3 btn">Valider</a>
             </div>
         </div>
