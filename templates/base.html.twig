@@ -48,24 +48,25 @@
         <div id="modal1" class="modal">
             <div class="modal-content container">
                 <h4 class="center">Connexion</h4>
-                <div class="row">
-                    <form class="col s12 container">
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="identifiant" type="text" class="validate">
-                                <label for="identifiant">Identifiant</label>
-                            </div>
+                <form class="col s12 container">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="identifiant" type="text" class="validate">
+                            <label for="identifiant">Identifiant</label>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">lock</i>
-                                <input id="mdp" type="text" class="validate">
-                                <label for="mdp">Mot de passe</label>
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock</i>
+                            <label for="password">Mot de passe</label>
+                            <input type="password" id="password"/>
+                            <span>
+                                <i class="material-icons prefix" id="reveal">visibility</i>
+                            </span>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
             <div class="row center">
                 <a href="#!" class="modal-close waves-effect blue darken-3 btn">Valider</a>
@@ -81,6 +82,38 @@
             <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
             <script src="js/materialize.js"></script>
             <script src="js/init.js"></script>
+            <script>
+                // Some vars
+                var passwordInput = $("#password"),
+                    revealBtn = $("#reveal");
+
+                // show / hide eye button
+                passwordInput.on("keyup", function () {
+                    if (!$(this).val()) {
+                        revealBtn.css("display", "none");
+                    } else {
+                        revealBtn.css("display", "initial");
+                    }
+                });
+
+                // show / hide password
+                revealBtn.on("mouseup", function () {
+                    if (passwordInput.attr("type") === "password") {
+                        passwordInput.attr("type", "text");
+                    } else {
+                        passwordInput.attr("type", "password");
+                    }
+                });
+
+                // show / hide password
+                revealBtn.on("mousedown", function () {
+                    if (passwordInput.attr("type") === "password") {
+                        passwordInput.attr("type", "text");
+                    } else {
+                        passwordInput.attr("type", "password");
+                    }
+                });
+            </script>
         {% endblock %}
     </body>
 </html>
