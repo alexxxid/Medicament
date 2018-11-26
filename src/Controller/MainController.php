@@ -16,4 +16,14 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/showMedicament", name="showMedicament")
+     */
+    public function showMedicament()
+    {
+        return $this->render('main/showMedicament.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }

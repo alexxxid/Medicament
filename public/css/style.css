@@ -113,3 +113,16 @@ footer.page-footer {
   color: #1976d2;
   opacity: 1;
 }
+
+a {
+  outline-style: none;
+}
+
+a:link {
+  text-decoration: none;
+  outline-style: none;
+}
+
+a.bouton:active {
+  outline-style: none;
+}
