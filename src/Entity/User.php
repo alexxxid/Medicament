@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -26,49 +27,45 @@ class User
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $confirm_password;
-
-    public function getId(): ?int
+    public function getId() : ? int
     {
         return $this->id;
     }
 
-    public function getUsername(): ?string
+    public function getUsername() : ? string
     {
         return $this->username;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(string $username) : self
     {
         $this->username = $username;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getPassword() : ? string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password) : self
     {
         $this->password = $password;
 
         return $this;
     }
-
-    public function getConfirmPassword(): ?string
+    public function eraseCredentials()
     {
-        return $this->confirm_password;
+
+    }
+    public function getSalt()
+    {
+
+    }
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
     }
 
-    public function setConfirmPassword(string $confirm_password): self
-    {
-        $this->confirm_password = $confirm_password;
-
-        return $this;
-    }
 }
