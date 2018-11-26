@@ -13,8 +13,6 @@
     $('.modal').modal();
     $('.modal-trigger').leanModal();
     $('input#input_text, textarea#textarea2').characterCounter();
-
-
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 
