@@ -2,25 +2,24 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Famille;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ConnexionType extends AbstractType
+class FamilleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username')
-            ->add('password', Password::class)
-            ->add('confirm_password', Password::class);
+            ->add('NomFamille')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Famille::class,
         ]);
     }
 }
