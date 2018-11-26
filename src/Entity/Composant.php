@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,16 @@ class Composant
      */
     private $NomComposant;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Composer", mappedBy="composant")
+     */
+    private $composers;
+
+    public function __construct()
+    {
+        $this->composers = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +46,37 @@ class Composant
     public function setNomComposant(string $NomComposant): self
     {
         $this->NomComposant = $NomComposant;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Composer[]
+     */
+    public function getComposers(): Collection
+    {
+        return $this->composers;
+    }
+
+    public function addComposer(Composer $composer): self
+    {
+        if (!$this->composers->contains($composer)) {
+            $this->composers[] = $composer;
+            $composer->setComposant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComposer(Composer $composer): self
+    {
+        if ($this->composers->contains($composer)) {
+            $this->composers->removeElement($composer);
+            // set the owning side to null (unless already changed)
+            if ($composer->getComposant() === $this) {
+                $composer->setComposant(null);
+            }
+        }
 
         return $this;
     }
