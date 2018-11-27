@@ -22,7 +22,6 @@ security:
 
             form_login:
                 login_path: login
-                default_target_path: acceuil
                 check_path: login
                 default_target_path: acceuil
 
