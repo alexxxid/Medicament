@@ -21,7 +21,6 @@
                 <div class="container">
                     {# MENU POUR LES ORDINATEURS #}
                     <ul class="right hide-on-med-and-down">
-<<<<<<< HEAD
                         {% if not app.user %}
                             <li>
                                 <a href="#modal1" class="modal-trigger waves-effect">Login</a>
@@ -35,14 +34,7 @@
                             </li>
                         {% endif %}
 
-=======
-                        <li>
-                            <a href="#modal1" class="modal-trigger waves-effect">Connexion</a>
-                        </li>
->>>>>>> e9086952a309d806e68f175f9d787276c3050c11
                     </ul>
-                    {#  #}
-
                 </div>
 
                 {# MENU POUR LES TELEPHONES PORTATIFS DE TYPE CELLULAIRE #}
@@ -70,17 +62,14 @@
                             <i class="material-icons prefix">account_circle</i>
                             <input id="identifiant" required="required" name="_username" type="text" class="validate">
                             <label for="identifiant">Identifiant</label>
+                            <input type="hidden" nam="_target_path" value="{{path('acceuil')}}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
                             <label for="password">Mot de passe</label>
-<<<<<<< HEAD
                             <input required="required" name="_password" type="password" id="password"/>
-=======
-                            <input type="password" id="password" class="validate"/>
->>>>>>> e9086952a309d806e68f175f9d787276c3050c11
                             <span>
                                 <i class="material-icons prefix" id="reveal">visibility</i>
                             </span>
