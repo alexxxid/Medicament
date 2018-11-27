@@ -1,111 +1,113 @@
 {% extends 'base.html.twig' %}
 {% block title %}Gestion Medicaments{% endblock %}
 {% block body %}
-    <div class="row">
-        <div class="col s4">
-            <div class="card  z-depth-5 hoverable light-blue darken-3">
+    <div class="valign-wrapper">
+        <div class="row">
+            <div class="col s4">
+                <div class="card  z-depth-5 hoverable light-blue darken-3">
 
-                <div class="card-content  light-blue darken-3">
-                    <div class="row">
-                        <div class="col s7 valign-wrapper">
-                            <h4 class=" light white-text valign-wrapper">Familles
-                                <span class="new badge blue lighten-1 center-align" data-badge-caption="">23156</span>
+                    <div class="card-content  light-blue darken-3">
+                        <div class="row">
+                            <div class="col s7 valign-wrapper">
+                                <h4 class=" light white-text valign-wrapper">Familles
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">23156</span>
 
-                            </h4>
-                        </div>
-                        <div class="col s5"></div>
-
-                    </div>
-                    <div class="row">
-                        <a href="#">
-                            <div class="card-image">
-                                <ul class="collection black-text">
-                                    <li class="collection-item">Famille 1</li>
-                                    <li class="collection-item ">Famille 2</li>
-                                    <li class="collection-item ">Famille 3</li>
-                                    <li class="collection-item ">Famille 4</li>
-                                </ul>
-
+                                </h4>
                             </div>
+                            <div class="col s5"></div>
 
+                        </div>
+                        <div class="row">
+                            <a href="{{path('famille')}}">
+                                <div class="card-image">
+                                    <ul class="collection black-text">
+                                        <li class="collection-item">Famille 1</li>
+                                        <li class="collection-item ">Famille 2</li>
+                                        <li class="collection-item ">Famille 3</li>
+                                        <li class="collection-item ">Famille 4</li>
+                                    </ul>
+
+                                </div>
+
+                            </a>
+                        </div>
+
+                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                            <i class="material-icons">add</i>
                         </a>
                     </div>
-
-                    <a class="btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-                        <i class="material-icons">add</i>
-                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="col s4">
-            <div class="card  z-depth-5 hoverable light-blue darken-3">
+            <div class="col s4">
+                <div class="card  z-depth-5 hoverable light-blue darken-3">
 
-                <div class="card-content  light-blue darken-3">
-                    <div class="row">
-                        <div class="col s7 valign-wrapper">
-                            <h4 class=" light white-text valign-wrapper">Médicaments
-                                <span class="new badge blue lighten-1 center-align" data-badge-caption="">954525</span>
+                    <div class="card-content  light-blue darken-3">
+                        <div class="row">
+                            <div class="col s7 valign-wrapper">
+                                <h4 class=" light white-text valign-wrapper">Médicaments
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">954525</span>
 
-                            </h4>
-                        </div>
-                        <div class="col s5"></div>
-
-                    </div>
-                    <div class="row">
-                        <a href="#">
-                            <div class="card-image">
-                                <ul class="collection black-text">
-                                    <li class="collection-item">Medicament 1</li>
-                                    <li class="collection-item ">Medicament 2</li>
-                                    <li class="collection-item ">Medicament 3</li>
-                                    <li class="collection-item ">Medicament 4</li>
-                                </ul>
-
+                                </h4>
                             </div>
+                            <div class="col s5"></div>
 
+                        </div>
+                        <div class="row">
+                            <a href="#">
+                                <div class="card-image">
+                                    <ul class="collection black-text">
+                                        <li class="collection-item">Medicament 1</li>
+                                        <li class="collection-item ">Medicament 2</li>
+                                        <li class="collection-item ">Medicament 3</li>
+                                        <li class="collection-item ">Medicament 4</li>
+                                    </ul>
+
+                                </div>
+
+                            </a>
+                        </div>
+
+                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                            <i class="material-icons">add</i>
                         </a>
                     </div>
-
-                    <a class="btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-                        <i class="material-icons">add</i>
-                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="col s4">
-            <div class="card  z-depth-5 hoverable light-blue darken-3">
+            <div class="col s4">
+                <div class="card  z-depth-5 hoverable light-blue darken-3">
 
-                <div class="card-content  light-blue darken-3">
-                    <div class="row">
-                        <div class="col s7 valign-wrapper">
-                            <h4 class=" light white-text valign-wrapper">Composants
-                                <span class="new badge blue lighten-1 center-align" data-badge-caption="">564</span>
+                    <div class="card-content  light-blue darken-3">
+                        <div class="row">
+                            <div class="col s7 valign-wrapper">
+                                <h4 class=" light white-text valign-wrapper">Composants
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">564</span>
 
-                            </h4>
-                        </div>
-                        <div class="col s5"></div>
-
-                    </div>
-                    <div class="row">
-                        <a href="#">
-                            <div class="card-image">
-                                <ul class="collection black-text">
-                                    <li class="collection-item">Composant 1</li>
-                                    <li class="collection-item ">Composant 2</li>
-                                    <li class="collection-item ">Composant 3</li>
-                                    <li class="collection-item ">Composant 4</li>
-                                </ul>
-
+                                </h4>
                             </div>
+                            <div class="col s5"></div>
 
+                        </div>
+                        <div class="row">
+                            <a href="#">
+                                <div class="card-image">
+                                    <ul class="collection black-text">
+                                        <li class="collection-item">Composant 1</li>
+                                        <li class="collection-item ">Composant 2</li>
+                                        <li class="collection-item ">Composant 3</li>
+                                        <li class="collection-item ">Composant 4</li>
+                                    </ul>
+
+                                </div>
+
+                            </a>
+                        </div>
+
+                        <a class="btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                            <i class="material-icons">add</i>
                         </a>
                     </div>
-
-                    <a class="btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-                        <i class="material-icons">add</i>
-                    </a>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@ class MainController extends AbstractController
      */
     public function login()
     {
-        return $this->render('main/index.html.twig');
+        return $this->render('main/acceuil.html.twig');
     }
 
     /**
@@ -40,5 +40,13 @@ class MainController extends AbstractController
         return $this->render('main/acceuil.html.twig', [
             'controller_name' => 'MainController',
         ]);
+    }
+
+    /**
+     * @Route("/famille", name="famille")
+     */
+    public function famille()
+    {
+        return $this->render('main/famille.html.twig');
     }
 }
