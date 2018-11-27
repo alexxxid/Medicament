@@ -12,8 +12,7 @@ class FamilleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('NomFamille')
-        ;
+            ->add('NomFamille');
     }
 
     public function configureOptions(OptionsResolver $resolver)
