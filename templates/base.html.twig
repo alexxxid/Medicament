@@ -22,7 +22,7 @@
                     {# MENU POUR LES ORDINATEURS #}
                     <ul class="right hide-on-med-and-down">
                         <li>
-                            <a href="#modal1" class="modal-trigger waves-effect">Login</a>
+                            <a href="#modal1" class="modal-trigger waves-effect">Connexion</a>
                         </li>
                     </ul>
                     {#  #}
@@ -98,20 +98,14 @@
 
                 // show / hide password
                 revealBtn.on("mouseup", function () {
-                    if (passwordInput.attr("type") === "password") {
-                        passwordInput.attr("type", "text");
-                    } else {
-                        passwordInput.attr("type", "password");
-                    }
+                    passwordInput.attr("type", "password");
+
                 });
 
                 // show / hide password
                 revealBtn.on("mousedown", function () {
-                    if (passwordInput.attr("type") === "password") {
-                        passwordInput.attr("type", "text");
-                    } else {
-                        passwordInput.attr("type", "password");
-                    }
+                    passwordInput.attr("type", "text");
+
                 });
             </script>
         {% endblock %}
