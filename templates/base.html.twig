@@ -21,9 +21,19 @@
                 <div class="container">
                     {# MENU POUR LES ORDINATEURS #}
                     <ul class="right hide-on-med-and-down">
-                        <li>
-                            <a href="#modal1" class="modal-trigger waves-effect">Login</a>
-                        </li>
+                        {% if not app.user %}
+                            <li>
+                                <a href="#modal1" class="modal-trigger waves-effect">Login</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{{ path('logout') }}">
+                                    Logout
+                                </a>
+
+                            </li>
+                        {% endif %}
+
                     </ul>
                     {#  #}
 
@@ -48,11 +58,11 @@
         <div id="modal1" class="modal">
             <div class="modal-content container">
                 <h4 class="center">Connexion</h4>
-                <form class="col s12 container">
+                <form action="{{path('login')}}" method="post" class="col s12 container">
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">account_circle</i>
-                            <input id="identifiant" type="text" class="validate">
+                            <input id="identifiant" required="required" name="_username" type="text" class="validate">
                             <label for="identifiant">Identifiant</label>
                         </div>
                     </div>
@@ -60,17 +70,18 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
                             <label for="password">Mot de passe</label>
-                            <input type="password" id="password"/>
+                            <input required="required" name="_password" type="password" id="password"/>
                             <span>
                                 <i class="material-icons prefix" id="reveal">visibility</i>
                             </span>
                         </div>
                     </div>
+                    <div class="row center">
+                        <button type="submit" class="modal-close waves-effect blue darken-3 btn">Valider</button>
+                    </div>
                 </form>
             </div>
-            <div class="row center">
-                <a href="#!" class="modal-close waves-effect blue darken-3 btn">Valider</a>
-            </div>
+
         </div>
 
         <div class="container">
