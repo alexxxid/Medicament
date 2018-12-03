@@ -19,15 +19,18 @@ class AppFixtures extends Fixture
     {
         //Compte Admin
         $user = new User();
-        $user->setUsername("admin");
+        $user->setUsername("admin")
+            ->setRoles('ROLE_ADMIN');
         $password = $this->encoder->encodePassword($user, 'admin');
+
 
         $user->setPassword($password);
         $manager->persist($user);
 
         //Compte Practicien
         $user = new User();
-        $user->setUsername("practicien");
+        $user->setUsername("practicien")
+            ->setRoles('ROLE_USER');
         $password = $this->encoder->encodePassword($user, 'practicien');
 
         $user->setPassword($password);
@@ -35,7 +38,8 @@ class AppFixtures extends Fixture
 
         //Compte Visiteur
         $user = new User();
-        $user->setUsername("visiteur");
+        $user->setUsername("visiteur")
+            ->setRoles('ROLE_USER');
         $password = $this->encoder->encodePassword($user, 'visiteur');
 
         $user->setPassword($password);

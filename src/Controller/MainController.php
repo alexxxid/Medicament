@@ -41,4 +41,12 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/famille", name="famille")
+     */
+    public function famille()
+    {
+        return $this->render('main/famille.html.twig');
+    }
 }

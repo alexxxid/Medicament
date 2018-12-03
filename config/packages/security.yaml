@@ -21,7 +21,11 @@ security:
             provider: in_database
 
             form_login:
+<<<<<<< HEAD
                 login_path: login               
+=======
+                login_path: login
+>>>>>>> d9531c472179ccc5dfc02f6a04d27081689abcfd
                 check_path: login
                 default_target_path: acceuil
 
@@ -41,5 +45,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        
+         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/acceuil, roles: ROLE_USER }
+         - { path: ^/acceuil, roles: ROLE_ADMIN }
+         # eazeaze
