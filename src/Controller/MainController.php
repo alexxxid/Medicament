@@ -22,7 +22,7 @@ class MainController extends AbstractController
      */
     public function login()
     {
-        return $this->render('main/acceuil.html.twig');
+        return $this->render('main/index.html.twig');
     }
 
     /**
