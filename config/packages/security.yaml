@@ -21,11 +21,7 @@ security:
             provider: in_database
 
             form_login:
-<<<<<<< HEAD
-                login_path: login               
-=======
                 login_path: login
->>>>>>> d9531c472179ccc5dfc02f6a04d27081689abcfd
                 check_path: login
                 default_target_path: acceuil
 
