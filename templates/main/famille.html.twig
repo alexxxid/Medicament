@@ -7,29 +7,30 @@
     <table class="highlight responsive-table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Item Name</th>
-                <th>Item Price</th>
+                <th>idFamille</th>
+                <th>Nom Famille</th>
+                <th></th>
             </tr>
         </thead>
 
         <tbody>
-            <tr>
-                <td>Alvin</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-            </tr>
-            <tr>
-                <td>Alan</td>
-                <td>Jellybean</td>
-                <td>$3.76</td>
-            </tr>
-            <tr>
-                <td>Jonathan</td>
-                <td>Lollipop</td>
-                <td>$7.00</td>
-            </tr>
-        </tbody>
-    </table>
+            {% for famille in familles %}
+                <tr>
+                    <td>{{ famille.id }}</td>
+                    <td>{{ famille.nom_famille }}
+                    </td>
+                    {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                        <td>
+                            <a href="" class="btn">
+                                <i class="material-icons">create</i>
+                            </a>
+                            <a href="" class="btn">
+                                <i class="material-icons">clear</i>
+                            </a>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
 
-{% endblock %}
+    {% endblock %}
