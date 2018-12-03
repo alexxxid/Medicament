@@ -47,6 +47,10 @@ class MainController extends AbstractController
      */
     public function famille()
     {
-        return $this->render('main/famille.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Famille::class);
+        $familles = $repo->findAll();
+        return $this->render('main/famille.html.twig', [
+            'familles' => $familles
+        ]);
     }
 }
