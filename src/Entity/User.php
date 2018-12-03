@@ -28,7 +28,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="array", length=255)
      */
     private $Roles;
 
@@ -68,12 +68,12 @@ class User implements UserInterface
     {
 
     }
-    public function getRoles() : ? string
+    public function getRoles() : ? array
     {
         return $this->Roles;
     }
 
-    public function setRoles(string $Roles) : self
+    public function setRoles(array $Roles) : self
     {
         $this->Roles = $Roles;
 

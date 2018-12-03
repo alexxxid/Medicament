@@ -20,7 +20,7 @@ class AppFixtures extends Fixture
         //Compte Admin
         $user = new User();
         $user->setUsername("admin")
-            ->setRoles('ROLE_ADMIN');
+            ->setRoles(['ROLE_ADMIN']);
         $password = $this->encoder->encodePassword($user, 'admin');
 
 
@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         //Compte Practicien
         $user = new User();
         $user->setUsername("practicien")
-            ->setRoles('ROLE_USER');
+            ->setRoles(['ROLE_USER']);
         $password = $this->encoder->encodePassword($user, 'practicien');
 
         $user->setPassword($password);
@@ -39,7 +39,7 @@ class AppFixtures extends Fixture
         //Compte Visiteur
         $user = new User();
         $user->setUsername("visiteur")
-            ->setRoles('ROLE_USER');
+            ->setRoles(['ROLE_USER']);
         $password = $this->encoder->encodePassword($user, 'visiteur');
 
         $user->setPassword($password);
