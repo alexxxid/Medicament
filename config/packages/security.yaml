@@ -21,8 +21,7 @@ security:
             provider: in_database
 
             form_login:
-                login_path: login
-                default_target_path: acceuil
+                login_path: login               
                 check_path: login
                 default_target_path: acceuil
 
