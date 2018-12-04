@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Famille;
+use App\Entity\Composant;
+use App\Entity\Medicaments;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
@@ -51,6 +54,32 @@ class MainController extends AbstractController
         $familles = $repo->findAll();
         return $this->render('main/famille.html.twig', [
             'familles' => $familles
+        ]);
+    }
+
+    /**
+     * @Route("/medicament", name="medicament")
+     */
+    public function medicament()
+    {
+        $repo = $this->getDoctrine()->getRepository(Medicaments::class);
+        $medicaments = $repo->findAll();
+
+        return $this->render('main/medicament.html.twig', [
+            'medicaments' => $medicaments
+        ]);
+    }
+    /**
+     * @Route("/composant" , name="composant")
+     */
+    public function composant()
+    {
+        $repo = $this->getDoctrine()->getRepository(Composant::class);
+        $composants = $repo->findall();
+
+        return $this->render('main/composant.html.twig', [
+            'composants' => $composants
+
         ]);
     }
 }

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medicaments{% endblock %}
+
+{% block body %}
+
+    <table class="highlight responsive-table">
+        <thead>
+            <tr>
+                <th>idMedicament</th>
+                <th>Nom Med</th>
+                <th>Nom famille</th>
+                <th>Prix</th>
+                <th>Contre Indication</th>
+                <th>Effet</th>
+                {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+
+        <tbody>
+            <section class="medicaments">
+                {% for medicament in medicaments %}
+                    <tr>
+                        <td>{{ medicament.id }}</td>
+                        <td>{{ medicament.NomCommercial }}</td>
+                        <td>{{ medicament.famille.NomFamille }}</td>
+                        <td>{{ medicament.PrixEchantillon }}</td>
+                        <td>{{ medicament.ContreIndication }}</td>
+                        <td>{{ medicament.Effet }}</td>
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <td>
+                                <a href="" class="btn">
+                                    <i class="material-icons">create</i>
+                                </a>
+                                <a href="" class="btn">
+                                    <i class="material-icons">clear</i>
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </section>
+        </tbody>
+    </table>
+
+{% endblock %}

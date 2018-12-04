@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Composants{% endblock %}
+
+{% block body %}
+
+    <table class="highlight responsive-table">
+        <thead>
+            <tr>
+                <th>idComposant</th>
+                <th>Nom Composant</th>
+                {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+
+        <tbody>
+            <section class="composants">
+                {% for composant in composants %}
+                    <tr>
+                        <td>{{ composant.id }}</td>
+                        <td>{{ composant.NomComposant }}</td>
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <td>
+                                <a href="" class="btn">
+                                    <i class="material-icons">create</i>
+                                </a>
+                                <a href="" class="btn">
+                                    <i class="material-icons">clear</i>
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </section>
+        </tbody>
+    </table>
+
+{% endblock %}
