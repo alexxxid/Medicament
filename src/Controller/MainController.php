@@ -6,6 +6,7 @@ use App\Entity\Famille;
 use App\Entity\Composant;
 use App\Entity\Medicaments;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
@@ -82,4 +83,5 @@ class MainController extends AbstractController
 
         ]);
     }
+
 }

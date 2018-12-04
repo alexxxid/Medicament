@@ -23,7 +23,11 @@
                         <td>{{ famille.NomFamille }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td>
-
+                                <a href="#modal2" class="modal-trigger btn">
+                                    <i class="material-icons">
+                                        calendar_view_day
+                                    </i>
+                                </a>
                                 <a href="" class="btn">
                                     <i class="material-icons">create</i>
                                 </a>
