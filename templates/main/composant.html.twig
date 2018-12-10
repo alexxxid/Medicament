@@ -26,6 +26,7 @@
                                 <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant">
                                     <i class="material-icons">create</i>
                                 </a>
+<<<<<<< HEAD
                                 <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un composant">
                                     <a href="{{ path('supprimerComposant', {'id': composant.id }) }}">
                                         <i class="material-icons">clear</i>
@@ -37,5 +38,17 @@
                 </section>
             </tbody>
         </table>
+=======
+                                <a href="{{ path('supprimerComposant', {'id': composant.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un composant">
+                                    <i class="material-icons">clear</i>
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </section>
+        </tbody>
+    </table>
+>>>>>>> 440fe94003e33380e572c418c4beb6737a7d85af
 
-    {% endblock %}
+{% endblock %}
