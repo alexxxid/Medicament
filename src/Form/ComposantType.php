@@ -12,8 +12,7 @@ class ComposantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('NomComposant')
-        ;
+            ->add('NomComposant');
     }
 
     public function configureOptions(OptionsResolver $resolver)

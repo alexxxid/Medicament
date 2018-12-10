@@ -6,9 +6,15 @@ use App\Entity\Famille;
 use App\Entity\Composer;
 use App\Entity\Composant;
 use App\Entity\Medicaments;
+use App\Form\ComposantType;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class MainController extends AbstractController
 {
@@ -41,7 +47,7 @@ class MainController extends AbstractController
     /**
      * @Route("/acceuil", name="acceuil")
      */
-    public function acceuil()
+    public function acceuil(Composant $composant = null, Request $request, ObjectManager $manager)
     {
         $repo = $this->getDoctrine()->getRepository(Famille::class);
         $familles = $repo->findAll();
@@ -55,7 +61,22 @@ class MainController extends AbstractController
         $composants = $repo->findall();
         $nbcomposants = count($composants);
 
+        if (!$composant) {
+            $composant = new Composant();
+        }
+        $form = $this->createForm(ComposantType::class, $composant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $manager->persist($composant);
+            $manager->flush();
+
+            return $this->redirectToRoute('acceuil');
+        }
+
         return $this->render('main/acceuil.html.twig', [
+            'formComposant' => $form->createView(),
             'familles' => $familles,
             'nbfamilles' => $nbfamilles,
             'medicaments' => $medicaments,
