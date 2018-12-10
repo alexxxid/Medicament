@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Persistence\ObjectManager;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ComposantRepository")
@@ -33,17 +34,17 @@ class Composant
         $this->composers = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId() : ? int
     {
         return $this->id;
     }
 
-    public function getNomComposant(): ?string
+    public function getNomComposant() : ? string
     {
         return $this->NomComposant;
     }
 
-    public function setNomComposant(string $NomComposant): self
+    public function setNomComposant(string $NomComposant) : self
     {
         $this->NomComposant = $NomComposant;
 
@@ -53,12 +54,12 @@ class Composant
     /**
      * @return Collection|Composer[]
      */
-    public function getComposers(): Collection
+    public function getComposers() : Collection
     {
         return $this->composers;
     }
 
-    public function addComposer(Composer $composer): self
+    public function addComposer(Composer $composer) : self
     {
         if (!$this->composers->contains($composer)) {
             $this->composers[] = $composer;
@@ -68,14 +69,16 @@ class Composant
         return $this;
     }
 
-    public function removeComposer(Composer $composer): self
+    public function removeComposer(Composer $composer, ObjectManager $manager) : self
     {
         if ($this->composers->contains($composer)) {
             $this->composers->removeElement($composer);
             // set the owning side to null (unless already changed)
-            if ($composer->getComposant() === $this) {
+            $manager->remove($composer);
+            $manager->flush();
+            /*if ($composer->getComposant() === $this) {
                 $composer->setComposant(null);
-            }
+            }*/
         }
 
         return $this;
