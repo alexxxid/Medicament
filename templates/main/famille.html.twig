@@ -31,16 +31,15 @@
                                 <a href="" class="btn waves-effect blue darken-3">
                                     <i class="material-icons">create</i>
                                 </a>
-                                <a href="" class="btn waves-effect blue darken-3">
-                                    <a href="{{ path('supprimerFamille', {'id': famille.id }) }}" class="btn">
-                                        <i class="material-icons">clear</i>
-                                    </a>
-                                </td>
-                            {% endif %}
-                        </tr>
-                    {% endfor %}
-                </section>
-            </tbody>
-        </table>
+                                <a href="{{ path('supprimerFamille', {'id': famille.id }) }}" class="btn waves-effect blue darken-3">
+                                    <i class="material-icons">clear</i>
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </section>
+        </tbody>
+    </table>
 
-    {% endblock %}
+{% endblock %}
