@@ -117,4 +117,39 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div id="modalajouterfam" class="modal bottom-sheet">
+            <div class="modal-content container">
+                <h4 class="center">Ajouter Famille</h4>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="modalajoutermed" class="modal bottom-sheet">
+            <div class="modal-content container">
+                <h4 class="center">Ajouter Medicament</h4>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="modalajoutercom" class="modal bottom-sheet">
+            <div class="modal-content container">
+                <h4 class="center">Ajouter Composant</h4>
+                <div class="row">
+                    {{ form_start(formComposant) }}
+                    <div class="input-field col s9">
+                        {{ form_widget(formComposant.NomComposant, {'attr': {'class': 'validate',}}) }}
+                        {{ form_label(formComposant.NomComposant) }}
+                    </div>
+                    <div class="input-field col s3">
+                        <button type="submit" class="btn waves-effect blue darken-3">
+                            Ajouter composant
+                            <i class="material-icons right">check</i>
+                        </button>
+                    </div>
+                    {{ form_end(formComposant) }}
+                </div>
+
+            </div>
+
+        </div>
+
     {% endblock %}
