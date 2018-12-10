@@ -43,3 +43,6 @@ security:
     access_control:
         
          - { path: ^/acceuil, roles: IS_AUTHENTICATED_FULLY }
+         - { path: ^/composant, roles: IS_AUTHENTICATED_FULLY }
+         - { path: ^/medicament, roles: IS_AUTHENTICATED_FULLY }
+         - { path: ^/famille, roles: IS_AUTHENTICATED_FULLY }

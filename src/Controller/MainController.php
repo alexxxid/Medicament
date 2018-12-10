@@ -23,10 +23,11 @@ class MainController extends AbstractController
      */
     public function index()
     {
+        if ($this->getUser() != null) {
 
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
-        ]);
+            return $this->redirectToRoute('acceuil');
+        }
+        return $this->render('main/index.html.twig');
     }
 
     /**
@@ -34,6 +35,10 @@ class MainController extends AbstractController
      */
     public function login()
     {
+        if ($this->getUser() != null) {
+
+            return $this->redirectToRoute('acceuil');
+        }
         return $this->render('main/index.html.twig');
     }
 
