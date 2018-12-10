@@ -23,10 +23,10 @@
                         <td>{{ composant.NomComposant }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td>
-                                <a href="" class="btn">
+                                <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant">
                                     <i class="material-icons">create</i>
                                 </a>
-                                <a href="" class="btn">
+                                <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un composant">
                                     <i class="material-icons">clear</i>
                                 </a>
                             </td>

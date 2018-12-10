@@ -31,15 +31,15 @@
                         <td>{{ medicament.Effet }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td>
-                                <a href="#modal2" class="modal-trigger btn">
+                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
                                 </a>
-                                <a href="" class="btn">
+                                <a href="" class="btn waves-effect blue darken-3">
                                     <i class="material-icons">create</i>
                                 </a>
-                                <a href="" class="btn">
+                                <a href="" class="btn waves-effect blue darken-3">
                                     <i class="material-icons">clear</i>
                                 </a>
                             </td>
@@ -49,5 +49,25 @@
             </section>
         </tbody>
     </table>
+    <!-- Modal Structure 2-->
+    <div id="modal2" class="modal">
+        <div class="modal-content container">
 
+            <h4 class="center">Afficher</h4>
+            <table class="highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>idMedicament</th>
+                        <th>Nom Med</th>
+                        <th>Prix</th>
+                        <th>Contre Indication</th>
+                        <th>Effet</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+
+        </div>
+
+    </div>
 {% endblock %}

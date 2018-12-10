@@ -104,9 +104,5 @@ class MainController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route ("/blog/new", name="blog_create")   
-     */
-
 
 }
