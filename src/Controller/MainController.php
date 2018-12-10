@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Famille;
+use App\Entity\Composer;
 use App\Entity\Composant;
 use App\Entity\Medicaments;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,6 +17,7 @@ class MainController extends AbstractController
      */
     public function index()
     {
+
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
         ]);
@@ -41,8 +43,25 @@ class MainController extends AbstractController
      */
     public function acceuil()
     {
+        $repo = $this->getDoctrine()->getRepository(Famille::class);
+        $familles = $repo->findAll();
+        $nbfamilles = count($familles);
+
+        $repo = $this->getDoctrine()->getRepository(Medicaments::class);
+        $medicaments = $repo->findAll();
+        $nbmedicaments = count($medicaments);
+
+        $repo = $this->getDoctrine()->getRepository(Composant::class);
+        $composants = $repo->findall();
+        $nbcomposants = count($composants);
+
         return $this->render('main/acceuil.html.twig', [
-            'controller_name' => 'MainController',
+            'familles' => $familles,
+            'nbfamilles' => $nbfamilles,
+            'medicaments' => $medicaments,
+            'nbmedicaments' => $nbmedicaments,
+            'composants' => $composants,
+            'nbcomposants' => $nbcomposants
         ]);
     }
 
@@ -84,4 +103,59 @@ class MainController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/famille/{id}/supprimerFamille",name="supprimerFamille")  
+     */
+    public function supprimerFamille(Famille $famille)
+    {
+        $manager = $this->getDoctrine()->getManager();
+        $medicaments = $famille->getMedicaments();
+        foreach ($medicaments as $medicament) {
+            $famille->removeMedicament($medicament);
+        }
+
+
+
+        $manager->remove($famille);
+        $manager->flush();
+
+
+        return $this->redirectToRoute('famille');
+    }
+
+    /**
+     * @Route("/medicament/{id}/supprimerMedicament", name="supprimerMedicament")
+     */
+    public function supprimerMedicament(Medicaments $medicament)
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        $composers = $medicament->getComposers();
+        foreach ($composers as $composer) {
+            $medicament->removeComposers($composer, $manager);
+        }
+
+        $manager->remove($medicament);
+        $manager->flush();
+
+        return $this->redirectToRoute('medicament');
+    }
+
+    /**
+     * @Route("/composant/{id}/supprimerComposant", name="supprimerComposant")
+     */
+    public function supprimerComposant(Composant $composant)
+    {
+        $manager = $this->getDoctrine()->getManager();
+
+        $composers = $composant->getComposers();
+        foreach ($composers as $composer) {
+            $composant->removeComposer($composer, $manager);
+        }
+
+        $manager->remove($composant);
+        $manager->flush();
+
+        return $this->redirectToRoute('composant');
+    }
 }

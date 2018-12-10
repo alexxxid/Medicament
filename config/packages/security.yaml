@@ -42,6 +42,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         
-        
          - { path: ^/acceuil, roles: IS_AUTHENTICATED_FULLY }
-         # eazeaze

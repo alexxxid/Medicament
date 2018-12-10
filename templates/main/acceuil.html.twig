@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col s7 valign-wrapper">
                                 <h4 class=" light white-text valign-wrapper">Familles
-                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">23156</span>
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">{{nbfamilles}}</span>
 
                                 </h4>
                             </div>
@@ -21,22 +21,24 @@
                             <a href="{{path('famille')}}">
                                 <div class="card-image">
                                     <ul class="collection black-text">
-                                        <li class="collection-item">Famille 1</li>
-                                        <li class="collection-item ">Famille 2</li>
-                                        <li class="collection-item ">Famille 3</li>
-                                        <li class="collection-item ">Famille 4</li>
+                                        <section class="famille">
+                                            {% for famille in familles %}
+
+                                                <li class="collection-item">{{famille.NomFamille}}</li>
+                                            {% endfor %}
+                                        </section>
                                     </ul>
 
                                 </div>
 
                             </a>
                         </div>
-                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
-                            <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
+                        <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
 
-                                <i class="material-icons">add</i>
-                            </a>
-                        {% endif %}
+                            <i class="material-icons">add</i>
+                        </a>
+                        {# {% endif %} #}
                     </div>
                 </div>
             </div>
@@ -48,7 +50,7 @@
                         <div class="row">
                             <div class="col s7 valign-wrapper">
                                 <h4 class=" light white-text valign-wrapper">Médicaments
-                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">954525</span>
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">{{nbmedicaments}}</span>
 
                                 </h4>
                             </div>
@@ -59,22 +61,24 @@
                             <a href="{{path('medicament')}}">
                                 <div class="card-image">
                                     <ul class="collection black-text">
-                                        <li class="collection-item">Medicament 1</li>
-                                        <li class="collection-item ">Medicament 2</li>
-                                        <li class="collection-item ">Medicament 3</li>
-                                        <li class="collection-item ">Medicament 4</li>
+                                        <section class="medicament">
+                                            {% for medicament in medicaments %}
+
+                                                <li class="collection-item">{{medicament.NomCommercial}}</li>
+                                            {% endfor %}
+                                        </section>
                                     </ul>
 
                                 </div>
 
                             </a>
                         </div>
-                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
-                            <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
+                        <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
 
-                                <i class="material-icons">add</i>
-                            </a>
-                        {% endif %}
+                            <i class="material-icons">add</i>
+                        </a>
+                        {# {% endif %}#}
                     </div>
                 </div>
             </div>
@@ -86,7 +90,7 @@
                         <div class="row">
                             <div class="col s7 valign-wrapper">
                                 <h4 class=" light white-text valign-wrapper">Composants
-                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">564</span>
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">{{nbcomposants}}</span>
 
                                 </h4>
                             </div>
@@ -97,21 +101,23 @@
                             <a href="{{path('composant')}}">
                                 <div class="card-image">
                                     <ul class="collection black-text">
-                                        <li class="collection-item">Composant 1</li>
-                                        <li class="collection-item ">Composant 2</li>
-                                        <li class="collection-item ">Composant 3</li>
-                                        <li class="collection-item ">Composant 4</li>
+                                        <section class="composant">
+                                            {% for composant in composants %}
+
+                                                <li class="collection-item">{{composant.NomComposant}}</li>
+                                            {% endfor %}
+                                        </section>
                                     </ul>
 
                                 </div>
 
                             </a>
                         </div>
-                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
-                            <a href="#modalajoutercom" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-                                <i class="material-icons">add</i>
-                            </a>
-                        {% endif %}
+                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
+                        <a href="#modalajoutercom" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                            <i class="material-icons">add</i>
+                        </a>
+                        {# {% endif %}#}
                     </div>
                 </div>
             </div>
