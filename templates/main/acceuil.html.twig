@@ -133,6 +133,21 @@
         <div id="modalajouterfam" class="modal bottom-sheet">
             <div class="modal-content container">
                 <h4 class="center">Ajouter Famille</h4>
+                <div class="row">
+                    {{ form_start(formFamille) }}
+                    <div class="input-field col s9">
+                        {{ form_widget(formFamille.NomFamille, {'attr': {'class': 'validate',}}) }}
+                        {{ form_label(formFamille.NomFamille) }}
+                    </div>
+                    <div class="input-field col s3">
+                        <button type="submit" class="btn waves-effect blue darken-3">
+                            Ajouter famille
+                            <i class="material-icons right">check</i>
+                        </button>
+                    </div>
+                    {{ form_end(formFamille) }}
+                </div>
+
             </div>
         </div>
         <!-- Modal -->
