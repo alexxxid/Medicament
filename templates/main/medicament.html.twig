@@ -31,15 +31,15 @@
                         <td>{{ medicament.Effet }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3">
+                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher un Medicament">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
                                 </a>
-                                <a href="" class="btn waves-effect blue darken-3">
+                                <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifier un Medicament Lamour">
                                     <i class="material-icons">create</i>
                                 </a>
-                                <a href="{{ path('supprimerMedicament', {'id': medicament.id }) }}" class="btn waves-effect blue darken-3">
+                                <a href="{{ path('supprimerMedicament', {'id': medicament.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un Lamour">
                                     <i class="material-icons">clear</i>
                                 </a>
                             </td>

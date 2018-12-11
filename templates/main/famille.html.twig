@@ -23,15 +23,15 @@
                         <td>{{ famille.NomFamille }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3">
+                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher un Famille">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
                                 </a>
-                                <a href="" class="btn waves-effect blue darken-3">
+                                <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modified un Famille">
                                     <i class="material-icons">create</i>
                                 </a>
-                                <a href="{{ path('supprimerFamille', {'id': famille.id }) }}" class="btn waves-effect blue darken-3">
+                                <a href="{{ path('supprimerFamille', {'id': famille.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un Famille">
                                     <i class="material-icons">clear</i>
                                 </a>
                             </td>
