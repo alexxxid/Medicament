@@ -1,6 +1,6 @@
 (function ($) {
   $(function () {
-
+    $('select').not('.disabled').formSelect();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.tabs').tabs();
@@ -11,7 +11,7 @@
       duration: 200
     });
     $('.modal').modal();
-    $('.modal-trigger').leanModal();
+    // $('.modal-trigger').leanModal();
     $('input#input_text, textarea#textarea2').characterCounter();
     $('.fixed-action-btn').floatingActionButton({
       direction: 'top',
@@ -23,6 +23,6 @@
 
 
 $(document).ready(function () {
-  M.updateTextFields();
+  // M.updateTextFields();
 });
 
