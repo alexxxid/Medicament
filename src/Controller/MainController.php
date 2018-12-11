@@ -5,16 +5,17 @@ namespace App\Controller;
 use App\Entity\Famille;
 use App\Entity\Composer;
 use App\Entity\Composant;
+use App\Form\FamilleType;
 use App\Entity\Medicaments;
 use App\Form\ComposantType;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MainController extends AbstractController
 {
@@ -52,8 +53,9 @@ class MainController extends AbstractController
     /**
      * @Route("/acceuil", name="acceuil")
      */
-    public function acceuil(Composant $composant = null, Request $request, ObjectManager $manager)
+    public function acceuil(Composant $composant = null, Famille $famille = null, Request $request, ObjectManager $manager)
     {
+        //AFFICHAGE DU NOMBRE DANS LA CARD
         $repo = $this->getDoctrine()->getRepository(Famille::class);
         $familles = $repo->findAll();
         $nbfamilles = count($familles);
@@ -66,22 +68,37 @@ class MainController extends AbstractController
         $composants = $repo->findall();
         $nbcomposants = count($composants);
 
+        //CREATION DES FORMULAIRES (MODALES)
         if (!$composant) {
             $composant = new Composant();
         }
-        $form = $this->createForm(ComposantType::class, $composant);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if (!$famille) {
+            $famille = new Famille();
+        }
+
+        $formComposant = $this->createForm(ComposantType::class, $composant);
+        $formComposant->handleRequest($request);
+
+        $formFamille = $this->createForm(FamilleType::class, $famille);
+        $formFamille->handleRequest($request);
+
+        if ($formComposant->isSubmitted() && $formComposant->isValid()) {
 
             $manager->persist($composant);
+            $manager->flush();
+
+            return $this->redirectToRoute('acceuil');
+        } else if ($formFamille->isSubmitted() && $formFamille->isValid()) {
+            $manager->persist($famille);
             $manager->flush();
 
             return $this->redirectToRoute('acceuil');
         }
 
         return $this->render('main/acceuil.html.twig', [
-            'formComposant' => $form->createView(),
+            'formComposant' => $formComposant->createView(),
+            'formFamille' => $formFamille->createView(),
             'familles' => $familles,
             'nbfamilles' => $nbfamilles,
             'medicaments' => $medicaments,

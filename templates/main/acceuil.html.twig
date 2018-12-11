@@ -33,12 +33,12 @@
 
                             </a>
                         </div>
-                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
-                        <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
 
-                            <i class="material-icons">add</i>
-                        </a>
-                        {# {% endif %} #}
+                                <i class="material-icons">add</i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -73,12 +73,12 @@
 
                             </a>
                         </div>
-                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
-                        <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
 
-                            <i class="material-icons">add</i>
-                        </a>
-                        {# {% endif %}#}
+                                <i class="material-icons">add</i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -113,11 +113,11 @@
 
                             </a>
                         </div>
-                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
-                        <a href="#modalajoutercom" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-                            <i class="material-icons">add</i>
-                        </a>
-                        {# {% endif %}#}
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <a href="#modalajoutercom" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                                <i class="material-icons">add</i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -127,6 +127,21 @@
         <div id="modalajouterfam" class="modal bottom-sheet">
             <div class="modal-content container">
                 <h4 class="center">Ajouter Famille</h4>
+                <div class="row">
+                    {{ form_start(formFamille) }}
+                    <div class="input-field col s9">
+                        {{ form_widget(formFamille.NomFamille, {'attr': {'class': 'validate',}}) }}
+                        {{ form_label(formFamille.NomFamille) }}
+                    </div>
+                    <div class="input-field col s3">
+                        <button type="submit" class="btn waves-effect blue darken-3">
+                            Ajouter famille
+                            <i class="material-icons right">check</i>
+                        </button>
+                    </div>
+                    {{ form_end(formFamille) }}
+                </div>
+
             </div>
         </div>
         <!-- Modal -->
