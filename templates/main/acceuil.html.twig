@@ -22,9 +22,11 @@
                                 <div class="card-image">
                                     <ul class="collection black-text">
                                         <section class="famille">
-                                            {% for famille in familles %}
 
-                                                <li class="collection-item">{{famille.NomFamille}}</li>
+                                            {% for famille in familles %}
+                                                {% if loop.index0 < 10 %}
+                                                    <li class="collection-item">{{famille.NomFamille}}</li>
+                                                {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
@@ -63,8 +65,10 @@
                                     <ul class="collection black-text">
                                         <section class="medicament">
                                             {% for medicament in medicaments %}
+                                                {% if loop.index0 < 10 %}
 
-                                                <li class="collection-item">{{medicament.NomCommercial}}</li>
+                                                    <li class="collection-item">{{medicament.NomCommercial}}</li>
+                                                {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
@@ -103,8 +107,10 @@
                                     <ul class="collection black-text">
                                         <section class="composant">
                                             {% for composant in composants %}
+                                                {% if loop.index0 < 10 %}
 
-                                                <li class="collection-item">{{composant.NomComposant}}</li>
+                                                    <li class="collection-item">{{composant.NomComposant}}</li>
+                                                {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
