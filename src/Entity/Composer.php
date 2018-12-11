@@ -72,10 +72,5 @@ class Composer
 
         return $this;
     }
-    public function suppravecmedicament(Medicaments $medicament)
-    {
-        $repo = $this->getDoctrine()->getRepository(Composant::class);
-        $composants = $repo->findall();
 
-    }
 }
