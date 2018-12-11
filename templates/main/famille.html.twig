@@ -23,12 +23,12 @@
                         <td>{{ famille.NomFamille }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3">
+                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3" onclick="afficher('{{famille.id}}')">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
                                 </a>
-                                <a href="" class="btn waves-effect blue darken-3">
+                                <a href="" class="modal-trigger btn waves-effect blue darken-3">
                                     <i class="material-icons">create</i>
                                 </a>
                                 <a href="{{ path('supprimerFamille', {'id': famille.id }) }}" class="btn waves-effect blue darken-3">
@@ -44,7 +44,7 @@
     <!-- Modal Structure 2-->
     <div id="modal2" class="modal">
         <div class="modal-content container">
-
+            {% set id = 1 %}
             <h4 class="center">Afficher</h4>
             <table class="highlight responsive-table">
                 <thead>
@@ -54,12 +54,27 @@
                         <th>Prix</th>
                         <th>Contre Indication</th>
                         <th>Effet</th>
-                        <th></th>
                     </tr>
                 </thead>
+                <tbody>
+                    <section class="medicaments">
+                        {% for medicament in medicaments %}
+                            {% if medicament.famille.id == id %}
+                                <tr>
+                                    <td>{{ medicament.id }}</td>
+                                    <td>{{ medicament.NomCommercial }}</td>
+                                    <td>{{ medicament.PrixEchantillon }}</td>
+                                    <td>{{ medicament.ContreIndication }}</td>
+                                    <td>{{ medicament.Effet }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                </tbody>
             </table>
 
         </div>
 
     </div>
+
 {% endblock %}
