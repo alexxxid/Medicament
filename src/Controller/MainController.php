@@ -6,6 +6,7 @@ use App\Entity\Famille;
 use App\Entity\Composer;
 use App\Entity\Composant;
 use App\Form\FamilleType;
+use App\Form\MedicamentsType;
 use App\Entity\Medicaments;
 use App\Form\ComposantType;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,7 +54,7 @@ class MainController extends AbstractController
     /**
      * @Route("/acceuil", name="acceuil")
      */
-    public function acceuil(Composant $composant = null, Famille $famille = null, Request $request, ObjectManager $manager)
+    public function acceuil(Composant $composant = null, Famille $famille = null, Medicaments $medicament = null, Request $request, ObjectManager $manager)
     {
         //AFFICHAGE DU NOMBRE DANS LA CARD
         $repo = $this->getDoctrine()->getRepository(Famille::class);
@@ -83,6 +84,10 @@ class MainController extends AbstractController
         $formFamille = $this->createForm(FamilleType::class, $famille);
         $formFamille->handleRequest($request);
 
+        $formMedicament = $this->createForm(MedicamentsType::class, $medicament);
+        $formMedicament->handleRequest($request);
+
+
         if ($formComposant->isSubmitted() && $formComposant->isValid()) {
 
             $manager->persist($composant);
@@ -94,11 +99,17 @@ class MainController extends AbstractController
             $manager->flush();
 
             return $this->redirectToRoute('acceuil');
+        } else if ($formMedicament->isSubmitted() && $formMedicament->isValid()) {
+            $manager->persist($medicament);
+            $manager->flush();
+
+            return $this->redirectToRoute('acceuil');
         }
 
         return $this->render('main/acceuil.html.twig', [
             'formComposant' => $formComposant->createView(),
             'formFamille' => $formFamille->createView(),
+            'formMedicament' => $formMedicament->createView(),
             'familles' => $familles,
             'nbfamilles' => $nbfamilles,
             'medicaments' => $medicaments,
