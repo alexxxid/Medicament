@@ -135,10 +135,6 @@ class Medicaments
             $manager->remove($composers);
             $manager->flush();
 
-
-            //if ($composers->getMedicament() === $this) {
-            //    $composers->setMedicament(null);
-            //}
         }
 
         return $this;

@@ -22,9 +22,11 @@
                                 <div class="card-image">
                                     <ul class="collection black-text">
                                         <section class="famille">
-                                            {% for famille in familles %}
 
-                                                <li class="collection-item">{{famille.NomFamille}}</li>
+                                            {% for famille in familles %}
+                                                {% if loop.index0 < 10 %}
+                                                    <li class="collection-item">{{famille.NomFamille}}</li>
+                                                {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
@@ -33,12 +35,12 @@
 
                             </a>
                         </div>
-                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
-                        <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
 
-                            <i class="material-icons">add</i>
-                        </a>
-                        {# {% endif %} #}
+                                <i class="material-icons">add</i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -63,8 +65,10 @@
                                     <ul class="collection black-text">
                                         <section class="medicament">
                                             {% for medicament in medicaments %}
+                                                {% if loop.index0 < 10 %}
 
-                                                <li class="collection-item">{{medicament.NomCommercial}}</li>
+                                                    <li class="collection-item">{{medicament.NomCommercial}}</li>
+                                                {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
@@ -73,12 +77,12 @@
 
                             </a>
                         </div>
-                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
-                        <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
 
-                            <i class="material-icons">add</i>
-                        </a>
-                        {# {% endif %}#}
+                                <i class="material-icons">add</i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -103,8 +107,10 @@
                                     <ul class="collection black-text">
                                         <section class="composant">
                                             {% for composant in composants %}
+                                                {% if loop.index0 < 10 %}
 
-                                                <li class="collection-item">{{composant.NomComposant}}</li>
+                                                    <li class="collection-item">{{composant.NomComposant}}</li>
+                                                {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
@@ -113,11 +119,11 @@
 
                             </a>
                         </div>
-                        {# {% if app.user.getRoles() == ['ROLE_ADMIN'] %}#}
-                        <a href="#modalajoutercom" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-                            <i class="material-icons">add</i>
-                        </a>
-                        {# {% endif %}#}
+                        {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+                            <a href="#modalajoutercom" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
+                                <i class="material-icons">add</i>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
