@@ -44,7 +44,7 @@
     <!-- Modal Structure 2-->
     <div id="modal2" class="modal">
         <div class="modal-content container">
-
+            {% set id = 1 %}
             <h4 class="center">Afficher</h4>
             <table class="highlight responsive-table">
                 <thead>
@@ -54,12 +54,27 @@
                         <th>Prix</th>
                         <th>Contre Indication</th>
                         <th>Effet</th>
-                        <th></th>
                     </tr>
                 </thead>
+                <tbody>
+                    <section class="medicaments">
+                        {% for medicament in medicaments %}
+                            {% if medicament.famille.id == id %}
+                                <tr>
+                                    <td>{{ medicament.id }}</td>
+                                    <td>{{ medicament.NomCommercial }}</td>
+                                    <td>{{ medicament.PrixEchantillon }}</td>
+                                    <td>{{ medicament.ContreIndication }}</td>
+                                    <td>{{ medicament.Effet }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </section>
+                </tbody>
             </table>
 
         </div>
 
     </div>
+
 {% endblock %}
