@@ -59,7 +59,7 @@
                 <tbody>
                     <section class="medicaments">
                         {% for medicament in medicaments %}
-                            {% if medicament.famille.id == id %}
+                            {% if medicament.famille.id == {{id}} %}
                                 <tr>
                                     <td>{{ medicament.id }}</td>
                                     <td>{{ medicament.NomCommercial }}</td>

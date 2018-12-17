@@ -60,8 +60,8 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">account_circle</i>
-                            <input id="identifiant" required="required" name="_username" type="text" class="validate">
-                            <label for="identifiant">Identifiant</label>
+                            <input id="username" required="required" name="_username" type="text" class="validate">
+                            <label for="username">Identifiant</label>
                             <input type="hidden" nam="_target_path" value="{{path('acceuil')}}">
                         </div>
                     </div>
@@ -69,15 +69,29 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
                             <label for="password">Mot de passe</label>
-                            <input required="required" name="_password" type="password" id="password"/>
+                            <input required="required" name="_password" type="password" id="password" class="validate"/>
                             {# <span> #}
                             <i class="material-icons prefix" id="reveal">visibility</i>
                             {# </span> #}
                         </div>
                     </div>
-                    <div class="row center">
-                        <button type="submit" class="modal-close waves-effect blue darken-3 btn">Valider</button>
+                    <div class="row center" id="validerLoginContainer">
+                        <button type="submit" id="validerLogin" class="waves-effect blue darken-3 btn">Valider</button>
+                        <div class="preloader-wrapper big active" id="loader">
+                            <div class="spinner-layer spinner-blue-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="row center"></div>
                 </form>
             </div>
 
@@ -118,7 +132,14 @@
 
                 });
             </script>
-            <script></script>
+            <script>
+                $("#validerLogin").click(function () {
+                    if ($("#username").val() != "" && $("#password").val() != "") {
+                        $("#validerLogin").toggle();
+                        $('#loader').toggle();
+                    }
+                });
+            </script>
 
         {% endblock %}
     </body>
