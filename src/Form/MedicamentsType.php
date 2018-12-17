@@ -18,31 +18,19 @@ class MedicamentsType extends AbstractType
     {
         $builder
             ->add('NomCommercial')
-            // ->add('PrixEchantillon')
-            // ->add('ContreIndication')
-            // ->add('Effet')
             ->add('famille', EntityType::class, array(
                 'class' => Famille::class,
                 'choice_label' => 'NomFamille',
                 'choice_attr' => [
-                    'class' => 'dropdown-content blue waves-effect darken-3',
+                    'class' => 'dropdown-content blue darken-3',
                     'id' => 'MedicamentFormFamilleDd',
 
                 ],
-                'placeholder' => 'Choose an option',
-                'required' => false
+            ))
+            ->add('PrixEchantillon')
+            ->add('ContreIndication')
+            ->add('Effet');
 
-            ));
-            // ->add(
-            //     'MedicamentFormFamilleDdTrigger',
-            //     ButtonType::class,
-            //     array(
-            //         'attr' => array(
-            //             'class' => 'dropdown-trigger btn',
-            //             'data-target' => 'MedicamentFormFamilleDdTrigger'
-            //         )
-            //     )
-            // )
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -46,7 +46,7 @@ class Medicaments
     private $composers;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Famille", inversedBy="medicaments")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $famille;
 

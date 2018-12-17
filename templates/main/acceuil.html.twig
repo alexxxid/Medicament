@@ -156,21 +156,37 @@
                 <h4 class="center">Ajouter Medicament</h4>
                 <div class="row">
                     {{ form_start(formMedicament) }}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_widget(formMedicament.NomCommercial) }}
+                            {{ form_label(formMedicament.NomCommercial) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_widget(formMedicament.famille,{'attr' : {'class': ' blue darken-3',}}) }}
+                            {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.PrixEchantillon) }}
+                            {{ form_label(formMedicament.PrixEchantillon) }}</div>
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.ContreIndication) }}
+                            {{ form_label(formMedicament.ContreIndication) }}</div>
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.Effet) }}
+                            {{ form_label(formMedicament.Effet) }}</div>
 
-                    <div class="input-field col s5">
-                        {{ form_widget(formMedicament.NomCommercial) }}
-                        {{ form_label(formMedicament.NomCommercial) }}
                     </div>
-                    <div class="input-field col s5">
-                        {{ form_widget(formMedicament.famille) }}
-                        {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <button type="submit" class="btn waves-effect blue darken-3" style="margin:auto;">
+                                Ajouter composant
+                                <i class="material-icons right">check</i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="input-field col s1">
-                        <button type="submit" class="btn waves-effect blue darken-3">
-                            Ajouter composant
-                            <i class="material-icons right">check</i>
-                        </button>
-                    </div>
+
                     {{ form_end(formMedicament) }}
                 </div>
             </div>
