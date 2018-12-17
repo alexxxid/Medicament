@@ -19,7 +19,7 @@
                         </div>
                         <div class="row">
                             <a href="{{path('famille')}}">
-                                <div class="card-image">
+                                <div class="card-image tooltipped" data-position="left" data-tooltip="Afficher les familles">
                                     <ul class="collection black-text">
                                         <section class="famille">
 
@@ -61,7 +61,7 @@
                         </div>
                         <div class="row">
                             <a href="{{path('medicament')}}">
-                                <div class="card-image">
+                                <div class="card-image tooltipped" data-position="bottom" data-tooltip="Afficher les médicaments">
                                     <ul class="collection black-text">
                                         <section class="medicament">
                                             {% for medicament in medicaments %}
@@ -103,7 +103,7 @@
                         </div>
                         <div class="row">
                             <a href="{{path('composant')}}">
-                                <div class="card-image">
+                                <div class="card-image tooltipped" data-position="right" data-tooltip="Afficher les composants">
                                     <ul class="collection black-text">
                                         <section class="composant">
                                             {% for composant in composants %}
@@ -179,10 +179,10 @@
 
                     </div>
 
-                    <div class="row">
-                        <div class="input-field col s5">
+                    <div class="row center">
+                        <div class="input-field col s12">
                             <button type="submit" class="btn waves-effect blue darken-3" style="margin:auto;">
-                                Ajouter composant
+                                Ajouter Médicament
                                 <i class="material-icons right">check</i>
                             </button>
                         </div>
