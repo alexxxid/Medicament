@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme formMedicament _self %}
 {% block title %}Gestion Medicaments{% endblock %}
 {% block body %}
     <div class="valign-wrapper">
@@ -178,6 +179,7 @@
                             {{ form_label(formMedicament.Effet) }}</div>
 
                     </div>
+                    <div class="class"></div>
                     <div class="row">
                         <div class="input-field col s5">
                             <button type="submit" class="btn waves-effect blue darken-3" style="margin:auto;">
@@ -213,6 +215,35 @@
 
         </div>
 
+    </div>
+
+{% endblock %}
+
+{% block _medicaments_Composants_widget %}
+
+    {{ form_widget(form) }}
+
+    <div class="form-group">
+        <button type="button" id="add-composant" class="btn btn-primary">Ajouter un Composant</button>
+    </div>
+
+{% endblock %}
+
+{% block _medicaments_Composants_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+
+{% block _medicaments_Composants_entry_widget %}
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col input-field">
+                {{ form_widget(form.composant)}}
+            </div>
+            <div class="col">
+                {{ form_widget(form.Quantite)}}
+            </div>
+        </div>
     </div>
 
 {% endblock %}

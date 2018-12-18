@@ -118,7 +118,21 @@
 
                 });
             </script>
-            <script></script>
+            <script>
+                $('#add-composant').click(function () {
+                    // je récupére le numéro des futurs champs
+                    const index = $('#medicaments_Composants div.form-group').length;
+
+                    //je récupère le prototype
+                    const tmpl = $('#medicaments_Composants').data('prototype').replace(/__name__/g, index);
+
+                    // j'incor^por le code au sein de la div
+
+                    $('#medicaments_Composants').append(tmpl);
+                    $('select').not('.disabled').formSelect();
+
+                })
+            </script>
 
         {% endblock %}
     </body>
