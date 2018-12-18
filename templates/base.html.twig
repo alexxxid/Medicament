@@ -145,7 +145,17 @@
                     $('#medicaments_Composants').append(tmpl);
                     $('select').not('.disabled').formSelect();
 
+                    handleDeleteButtons();
+
                 })
+
+                function handleDeleteButtons() {
+                    $('button[data-action="delete"]').click(function () {
+                        const target = this.dataset.target;
+                        console.log(target);
+                        $(target).remove();
+                    });
+                }
             </script>
 
         {% endblock %}
