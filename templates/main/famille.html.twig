@@ -59,15 +59,15 @@
                 <tbody>
                     <section class="medicaments">
                         {% for medicament in medicaments %}
-                            {% if medicament.famille.id == id %}
-                                <tr>
-                                    <td>{{ medicament.id }}</td>
-                                    <td>{{ medicament.NomCommercial }}</td>
-                                    <td>{{ medicament.PrixEchantillon }}</td>
-                                    <td>{{ medicament.ContreIndication }}</td>
-                                    <td>{{ medicament.Effet }}</td>
-                                </tr>
-                            {% endif %}
+                            {# {% if medicament.famille.id == {{id}} %} #}
+                            <tr>
+                                <td>{{ medicament.id }}</td>
+                                <td>{{ medicament.NomCommercial }}</td>
+                                <td>{{ medicament.PrixEchantillon }}</td>
+                                <td>{{ medicament.ContreIndication }}</td>
+                                <td>{{ medicament.Effet }}</td>
+                            </tr>
+                            {# {% endif %} #}
                         {% endfor %}
                     </section>
                 </tbody>

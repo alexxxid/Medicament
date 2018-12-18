@@ -1,5 +1,6 @@
 (function ($) {
   $(function () {
+    $('#loader').toggle();
     $('select').not('.disabled').formSelect();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
