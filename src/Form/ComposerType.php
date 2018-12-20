@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ComposerType extends AbstractType
 {
@@ -24,7 +25,11 @@ class ComposerType extends AbstractType
 
                 ],
             ))
-            ->add('Quantite');
+            ->add('Quantite', NumberType::class, [
+                'attr' => [
+                    'placeholder' => "Quantité du Composant"
+                ]
+            ]);
 
     }
 
