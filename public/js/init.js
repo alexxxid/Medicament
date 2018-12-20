@@ -19,6 +19,7 @@
       hoverEnabled: false
     });
     $('.tooltipped').tooltip();
+    handleDeleteButtons();
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 
