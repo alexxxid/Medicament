@@ -2,162 +2,157 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>
-            {% block title %}Welcome!{% endblock %}
-        </title>
-        {% block stylesheets %}
-            <!-- CSS -->
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-            <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-            <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
-        {% endblock %}
-    </head>
-    <body>
-        <nav class="nav-extended blue darken-3 ">
-            <div class="nav-wrapper ">
-                <a href="{{path('acceuil')}}" class="brand-logo text-lighten-2 light">Medicament</a>
-                <div class="container">
-                    {# MENU POUR LES ORDINATEURS #}
-                    <ul class="right hide-on-med-and-down">
-                        {% if not app.user %}
-                            <li>
-                                <a href="#modal1" class="modal-trigger waves-effect">Login</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a href="{{ path('logout') }}">
-                                    Logout
-                                </a>
-
-                            </li>
-                        {% endif %}
-
-                    </ul>
-                </div>
-
-                {# MENU POUR LES TELEPHONES PORTATIFS DE TYPE CELLULAIRE #}
-                <ul id="nav-mobile" class="sidenav">
-                    <li>
-                        <a href="#modal1">Login</a>
-                    </li>
-                </ul>
-                <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-                    <i class="material-icons">menu</i>
-                </a>
-                {#  #}
-
-            </div>
-
-        </nav>
-
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content container">
-                <h4 class="center">Connexion</h4>
-                <form action="{{path('login')}}" method="post" class="col s12 container">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">account_circle</i>
-                            <input id="username" required="required" name="_username" type="text" class="validate">
-                            <label for="username">Identifiant</label>
-                            <input type="hidden" nam="_target_path" value="{{path('acceuil')}}">
+            <title>
+                {% block title %}Welcome!{% endblock %}
+            </title>
+            {% block stylesheets %}
+                <!-- CSS -->
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                    <link href="css/materialize.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+                    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+                        <link href="css/style.css" media="screen,projection" rel="stylesheet" type="text/css"/>
+                    {% endblock %}
+                </head>
+                <body>
+                    <nav class="nav-extended blue darken-3 ">
+                        <div class="nav-wrapper ">
+                            <a href="{{path('acceuil')}}" class="brand-logo text-lighten-2 light">Medicament</a>
+                            <div
+                                class="container">
+                                {# MENU POUR LES ORDINATEURS #}
+                                <ul class="right hide-on-med-and-down">
+                                    {% if not app.user %}
+                                        <li>
+                                            <a href="#modal1" class="modal-trigger waves-effect">Login</a>
+                                        </li>
+                                        {% else %}
+                                        <li class="nav-item">
+                                            <a href="{{ path('logout') }}">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            {# MENU POUR LES TELEPHONES PORTATIFS DE TYPE CELLULAIRE #}
+                            <ul id="nav-mobile" class="sidenav">
+                                <li>
+                                    <a href="#modal1">Login</a>
+                                </li>
+                            </ul>
+                            <a class="sidenav-trigger" data-target="nav-mobile" href="#">
+                                <i class="material-icons">menu</i>
+                            </a>
+                            {#  #}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">lock</i>
-                            <label for="password">Mot de passe</label>
-                            <input required="required" name="_password" type="password" id="password" class="validate"/>
-                            {# <span> #}
-                            <i class="material-icons prefix" id="reveal">visibility</i>
-                            {# </span> #}
-                        </div>
-                    </div>
-                    <div class="row center" id="validerLoginContainer">
-                        <button type="submit" id="validerLogin" class="waves-effect blue darken-3 btn">Valider</button>
-                        <div class="preloader-wrapper big active" id="loader">
-                            <div class="spinner-layer spinner-blue-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div>
-                                <div class="circle-clipper right">
-                                    <div class="circle"></div>
+                    </nav>
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content container">
+                            <h4 class="center">Connexion</h4>
+                            <form action="{{path('login')}}" method="post" class="col s12 container">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input class="validate" id="username" name="_username" required="required" type="text">
+                                            <label for="username">Identifiant</label>
+                                            <input type="hidden" nam="_target_path" value="{{path('acceuil')}}"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <i class="material-icons prefix">lock</i>
+                                                <label for="password">Mot de passe</label>
+                                                <input
+                                                class="validate" id="password" name="_password" required="required" type="password"/>
+                                                {# <span> #}
+                                                <i class="material-icons prefix" id="reveal">visibility</i>
+                                                {# </span> #}
+                                            </div>
+                                        </div>
+                                        <div class="row center" id="validerLoginContainer">
+                                            <button class="waves-effect blue darken-3 btn" id="validerLogin" type="submit">Valider</button>
+                                            <div class="preloader-wrapper big active" id="loader">
+                                                <div class="spinner-layer spinner-blue-only">
+                                                    <div class="circle-clipper left">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="gap-patch">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                    <div class="circle-clipper right">
+                                                        <div class="circle"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row center"></div>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row center"></div>
-                </form>
-            </div>
-
-        </div>
-
-        <div class="container">
-            {% block body %}{% endblock %}
-        </div>
-
-        {% block javascripts %}
-            <!-- Scripts-->
-            <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
-            <script src="js/materialize.js"></script>
-            <script src="js/init.js"></script>
-            <script>
-                // Some vars
-                var passwordInput = $("#password"),
-                    revealBtn = $("#reveal");
-
-                // show / hide eye button
-                passwordInput.on("keyup", function () {
-                    if (!$(this).val()) {
-                        revealBtn.css("display", "none");
-                    } else {
-                        revealBtn.css("display", "initial");
-                    }
-                });
-
-                // show / hide password
-                revealBtn.on("mouseup", function () {
-                    passwordInput.attr("type", "password");
-
-                });
-
-                // show / hide password
-                revealBtn.on("mousedown", function () {
-                    passwordInput.attr("type", "text");
-
-                });
-            </script>
-            <script>
-                $('#add-composant').click(function () {
-                    // je récupére le numéro des futurs champs
-                    const index = $('#medicaments_Composants div.form-group').length;
-
-                    //je récupère le prototype
-                    const tmpl = $('#medicaments_Composants').data('prototype').replace(/__name__/g, index);
-
-                    // j'incor^por le code au sein de la div
-
-                    $('#medicaments_Composants').append(tmpl);
-                    $('select').not('.disabled').formSelect();
-
-                    handleDeleteButtons();
-
-                })
-
-                function handleDeleteButtons() {
-                    $('button[data-action="delete"]').click(function () {
-                        const target = this.dataset.target;
-                        console.log(target);
-                        $(target).remove();
-                    });
-                }
-            </script>
-
-        {% endblock %}
-    </body>
-</html>
+                            <div class="container">
+                                {% block body %}{% endblock %}
+                            </div>
+                            {% block javascripts %}
+                                <!-- Scripts-->
+                                <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
+                                <script src="js/materialize.js"></script>
+                                <script src="js/init.js"></script>
+                                <script>
+                                    // Some vars
+                                    var passwordInput = $("#password"),
+                                        revealBtn = $("#reveal");
+                                    // show / hide eye button
+                                    passwordInput.on("keyup", function () {
+                                        if (!$(this).val()) {
+                                            revealBtn.css("display", "none");
+                                        } else {
+                                            revealBtn.css("display", "initial");
+                                        }
+                                    });
+                                    // show / hide password
+                                    revealBtn.on("mouseup", function () {
+                                        passwordInput.attr("type", "password");
+                                    });
+                                    // show / hide password
+                                    revealBtn.on("mousedown", function () {
+                                        passwordInput.attr("type", "text");
+                                    });
+                                </script>
+                                <script>
+                                    $('#add-composant').click(function () { // je récupére le numéro des futurs champs
+                                        const index = $('#medicaments_Composants div.form-group').length;
+                                        // je récupère le prototype
+                                        const tmpl = $('#medicaments_Composants').data('prototype').replace(/__name__/g, index);
+                                        // j'incor^por le code au sein de la div
+                                        $('#medicaments_Composants').append(tmpl);
+                                        $('select').not('.disabled').formSelect();
+                                        handleDeleteButtons();
+                                    })
+                                    function handleDeleteButtons() {
+                                        $('button[data-action="delete"]').click(function () {
+                                            const target = this.dataset.target;
+                                            console.log(target);
+                                            $(target).remove();
+                                        });
+                                    }
+                                </script>
+                                <script>
+                                    function valid(button) {
+                                        var emptyInputs = $(button.closest("form")).find('input[type="text"]').filter(function () {
+                                            return $(this).val() == "";
+                                        });
+                                        if (! emptyInputs.length) {
+                                            var buttonParent = $(button).parent().get(0);
+                                            $(button).hide();
+                                            $(buttonParent).append($("#loader"));
+                                            $("#loader").toggle();
+                                        }
+                                    }
+                                    function testInputs(button) { // Si le input est vide
+                                        if ($("input").val() === "") {} else {}
+                                    }
+                                </script>
+                            {% endblock %}
+                        </body>
+                    </html>
+                
