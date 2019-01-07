@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Form\ComposerType;
 use App\Entity\Medicaments;
 use Proxies\__CG__\App\Entity\Famille;
 use Symfony\Component\Form\AbstractType;
@@ -29,7 +30,15 @@ class MedicamentsType extends AbstractType
             ))
             ->add('PrixEchantillon')
             ->add('ContreIndication')
-            ->add('Effet');
+            ->add('Effet')
+            ->add(
+                'Composants',
+                CollectionType::class,
+                [
+                    'entry_type' => ComposerType::class,
+                    'allow_add' => true
+                ]
+            );
 
     }
 

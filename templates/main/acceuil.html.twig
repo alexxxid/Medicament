@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme formMedicament _self %}
 {% block title %}Gestion Medicaments{% endblock %}
 {% block body %}
     <div class="valign-wrapper">
@@ -178,19 +179,47 @@
                             {{ form_label(formMedicament.Effet) }}</div>
 
                     </div>
+                    <div class="class"></div>
+                    <div class="row">
+                        <div class="input-field col s5">
 
-                    <div class="row center">
-                        <div class="input-field col s12">
-                            <button type="submit" class="btn waves-effect blue darken-3" style="margin:auto;">
-                                Ajouter Médicament
+                            <div class="row center">
+                                <div class="input-field col s12">
+                                    <button type="submit" class="btn waves-effect blue darken-3" style="margin:auto;">
+                                        Ajouter Médicament
+                                        <i class="material-icons right">check</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            {{ form_end(formMedicament) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal COMPOSANT-->
+            <div id="modalajoutercom" class="modal bottom-sheet">
+                <div class="modal-content container">
+                    <h4 class="center">Ajouter Composant</h4>
+                    <div class="row">
+                        {{ form_start(formComposant) }}
+                        <div class="input-field col s9">
+                            {{ form_widget(formComposant.NomComposant, {'attr': {'class': 'validate',}}) }}
+                            {{ form_label(formComposant.NomComposant) }}
+                        </div>
+                        <div class="input-field col s3">
+                            <button type="submit" class="btn waves-effect blue darken-3">
+                                Ajouter composant
                                 <i class="material-icons right">check</i>
                             </button>
                         </div>
+                        {{ form_end(formComposant) }}
                     </div>
 
-                    {{ form_end(formMedicament) }}
                 </div>
+
             </div>
+<<<<<<< HEAD
         </div>
     </div>
     <!-- Modal COMPOSANT-->
@@ -210,10 +239,44 @@
                     </button>
                 </div>
                 {{ form_end(formComposant) }}
+=======
+
+        {% endblock %}
+
+        {% block _medicaments_Composants_widget %}
+
+            {{ form_widget(form) }}
+
+            <div class="form-group">
+                <button type="button" id="add-composant" class="btn btn-primary">Ajouter un Composant</button>
+>>>>>>> 74b9e51e1938ce98d2867527d4f2a9ad36a2dd14
             </div>
 
-        </div>
+        {% endblock %}
 
-    </div>
+        {% block _medicaments_Composants_entry_row %}
+            {{ form_widget(form) }}
+        {% endblock %}
 
-{% endblock %}
+        {% block _medicaments_Composants_entry_widget %}
+
+            <div class="form-group" id="block_{{id}}">
+                <div class="row">
+                    <div class="col input-field s10">
+                        <div class="row">
+                            <div class="col input-field s5">
+                                {{ form_widget(form.composant)}}
+                            </div>
+                            <div class="col input-field s5">
+                                {{ form_widget(form.Quantite)}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col input-field s2">
+                        <button type="button" data-action="delete" data-target="#block_{{id}}" class="btn btn-danger">X</button>
+                    </div>
+                </div>
+
+            </div>
+
+        {% endblock %}
