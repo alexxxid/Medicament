@@ -140,6 +140,24 @@
                     }
                 });
             </script>
+            <script>
+                function valid(button) {
+
+                    var emptyInputs = $(button.closest("form")).find('input[type="text"]').filter(function () {
+                        return $(this).val() == "";
+                    });
+                    if (!emptyInputs.length) {
+                        var buttonParent = $(button).parent().get(0);
+                        $(button).hide();
+                        $(buttonParent).append($("#loader"));
+                        $("#loader").toggle();
+                    }
+                }
+                function testInputs(button) {
+                    //Si le input est vide
+                    if ($("input").val() === "") {} else {}
+                }
+            </script>
         {% endblock %}
     </body>
 </html>

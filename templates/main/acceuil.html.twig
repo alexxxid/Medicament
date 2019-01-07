@@ -140,7 +140,7 @@
                         {{ form_label(formFamille.NomFamille) }}
                     </div>
                     <div class="input-field col s3">
-                        <button type="submit" class="btn waves-effect blue darken-3">
+                        <button type="submit" onclick="valid(this);" class="btn waves-effect blue darken-3">
                             Ajouter famille
                             <i class="material-icons right">check</i>
                         </button>
@@ -162,7 +162,7 @@
                             {{ form_label(formMedicament.NomCommercial) }}
                         </div>
                         <div class="input-field col s6">
-                            {{ form_widget(formMedicament.famille,{'attr' : {'class': ' blue darken-3',}}) }}
+                            {{ form_widget(formMedicament.famille) }}
                             {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                     {{ form_label(formComposant.NomComposant) }}
                 </div>
                 <div class="input-field col s3">
-                    <button type="submit" class="btn waves-effect blue darken-3">
+                    <button type="submit" onclick="valid(this);" class="btn waves-effect blue darken-3">
                         Ajouter composant
                         <i class="material-icons right">check</i>
                     </button>
