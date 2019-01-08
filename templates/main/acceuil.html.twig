@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-{% form_theme formMedicament _self %}
 {% block title %}Gestion Medicaments{% endblock %}
 {% block body %}
     <div class="valign-wrapper">
@@ -113,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modal FAMILLE b ite-->
+        <!-- Modal FAMILLE-->
         <div id="modalajouterfam" class="modal bottom-sheet">
             <div class="modal-content container">
                 <h4 class="center">Ajouter Famille</h4>
@@ -124,55 +123,57 @@
                         {{ form_label(formFamille.NomFamille) }}
                     </div>
                     <div class="input-field col s3">
-                        <buttonclass="btnwaves-effectbluedarken-3"onclick="valid(this);"type="submit">
-                            <buttontype="submit"class="btnwaves-effectbluedarken-3">
-                                Ajouter famille
-                                <i class="material-icons right">check</i>
-                            </button>
-                        </div>
-                        {{ form_end(formFamille) }}
+                        <button class="btn waves-effect blue darken-3" onclick="valid(this);" type="submit">
+                            Ajouter famille
+                            <i class="material-icons right">check</i>
+                        </button>
                     </div>
+                    {{ form_end(formFamille) }}
                 </div>
             </div>
-            <!-- Modal MEDICAMENT-->
-            <div class="modalmodal-fixed-footer" id="modalajoutermed" style="height:75%;">
-                <divclass="modalbottom-sheet"id="modalajoutermed"style="height:75%;">
-                    <div class="modal-content container">
-                        <h4 class="center">Ajouter Medicament</h4>
-                        <div class="row">
-                            {{ form_start(formMedicament) }}
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    {{ form_widget(formMedicament.NomCommercial) }}
-                                    {{ form_label(formMedicament.NomCommercial) }}
-                                </div>
-                                <div class="input-field col s6">
-                                    {{ form_widget(formMedicament.famille,{'attr' : {'class': ' blue darken-3',}}) }}
-                                    {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s4">
-                                    {{ form_widget(formMedicament.PrixEchantillon) }}
-                                    {{ form_label(formMedicament.PrixEchantillon) }}</div>
-                                <div class="input-field col s4">
-                                    {{ form_widget(formMedicament.ContreIndication) }}
-                                    {{ form_label(formMedicament.ContreIndication) }}</div>
-                                <div class="input-field col s4">
-                                    {{ form_widget(formMedicament.Effet) }}
-                                    {{ form_label(formMedicament.Effet) }}</div>
-                            </div>
+        </div>
+        <!-- Modal MEDICAMENT-->
+        <div class="modal bottom-sheet" id="modalajoutermed" style="height:75%;">
+            <div class="modal-content container">
+                <h4 class="center">Ajouter Medicament</h4>
+                <div class="row">
+                    {{ form_start(formMedicament) }}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_widget(formMedicament.NomCommercial) }}
+                            {{ form_label(formMedicament.NomCommercial) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_widget(formMedicament.famille) }}
+                            {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.PrixEchantillon) }}
+                            {{ form_label(formMedicament.PrixEchantillon) }}</div>
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.ContreIndication) }}
+                            {{ form_label(formMedicament.ContreIndication) }}</div>
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.Effet) }}
+                            {{ form_label(formMedicament.Effet) }}</div>
+                    </div>
+                    <div class="row center">
+                        <div class="input-field col s12">
                             <button class="btn waves-effect blue darken-3" style="margin:auto;" type="submit">
                                 Ajouter Médicament
                                 <i class="material-icons right">check</i>
                             </button>
-                            {{ form_end(formMedicament) }}
                         </div>
                     </div>
+                    {{ form_end(formMedicament) }}
                 </div>
             </div>
         </div>
-    </div><!-- Modal COMPOSANT--><div id="modalajoutercom" class="modal bottom-sheet">
+    </div>
+    <!-- Modal COMPOSANT-->
+    <div id="modalajoutercom" class="modal bottom-sheet">
         <div class="modal-content container">
             <h4 class="center">Ajouter Composant</h4>
             <div class="row">
@@ -187,66 +188,8 @@
                         <i class="material-icons right">check</i>
                     </button>
                 </div>
-                {{ form_end(formComposant) }}{% endblock %}
-            {% block _medicaments_Composants_widget %}
-                {{ form_widget(form) }}
-                <div class="row">
-                    <div class="input-field col s9">
-                        <div class="form-group">
-                            <button class="btn btn-primary valider" id="add-composant" type="button">Ajouter un Composant</button>
-                        </div>
-                    </div>
-                </div>
-            {% endblock %}{# C EST LA MODAL IMBRIQUER #}<div class="class"></div>
-            <div class="row">
-                <div class="input-field col s5">
-                    <div class="row center">
-                        <div class="input-field col s12">
-                            <button class="btn waves-effect blue darken-3" style="margin:auto;" type="submit">
-                                Ajouter Médicament
-                                <i class="material-icons right">check</i>
-                            </button>
-                        </div>
-                    </div>
-                    {{ form_end(formMedicament) }}
-                </div>
+                {{ form_end(formComposant) }}
             </div>
-        </div>
-    </div><!-- Modal COMPOSANT--><div id="modalajoutercom" class="modal bottom-sheet">
-        <div class="modal-content container">
-            <h4 class="center">Ajouter Composant</h4>
-            <div class="row">
-                {{ form_start(formComposant) }}
-                <div class="input-field col s9">
-                    {{ form_widget(formComposant.NomComposant, {'attr': {'class': 'validate',}}) }}
-                    {{ form_label(formComposant.NomComposant) }}
-                </div>
-                <div class="input-field col s3">
-                    <button type="submit" class="btn waves-effect blue darken-3">
-                        Ajouter composant
-                        <i class="material-icons right">check</i>
-                    </button>
-                </div>
-                {{ form_end(formComposant) }}</div>
         </div>
     </div>
-</div>{% endblock %}{% block _medicaments_Composants_widget %}
-{{ form_widget(form) }}<div class="form-group">
-    <button class="btn btn-primary" id="add-composant" type="button">
-        Ajouter un Composant</button>
-</div>{% endblock %}{% block _medicaments_Composants_entry_row %}
-{{ form_widget(form) }}{% endblock %}{% block _medicaments_Composants_entry_widget %}
-<div class="form-group" id="block_{{id}}">
-    <div class="row">
-        <div class="col input-field s10">
-            <div class="row">
-                <div class="col input-field s5">
-                    {{ form_widget(form.composant)}}
-                </div>
-                <div class="col input-field s5">
-                    {{form_label(form.Quantite)}}
-                    {{ form_widget(form.Quantite)}}
-                </div>
-            </div>
-        </div>
-    {% endblock %}
+{% endblock %}
