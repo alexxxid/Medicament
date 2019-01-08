@@ -220,33 +220,6 @@
                         {{ form_widget(form.Quantite)}}
                     </div>
                 </div>
-            </div>
-            <div class="col input-field s2">
-                <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
-            </div>
-        </div>
-    </div>
-{% endblock %}
-{{ form_widget(form) }}
-    <div class="form-group">
-        <button class="btn btn-primary" id="add-composant" type="button">Ajouter un Composant</button>
-    </div>
-{% endblock %}
-{% block _medicaments_Composants_entry_row %}
-    {{ form_widget(form) }}
-{% endblock %}
-{% block _medicaments_Composants_entry_widget %}
-    <div class="form-group" id="block_{{id}}">
-        <div class="row">
-            <div class="col input-field s10">
-                <div class="row">
-                    <div class="col input-field s5">
-                        {{ form_widget(form.composant)}}
-                    </div>
-                    <div class="col input-field s5">
-                        {{ form_widget(form.Quantite)}}
-                    </div>
-                </div>
                 <div class="col input-field s2">
                     <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
                 </div>
@@ -255,5 +228,5 @@
                 <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
             </div>
         </div>
-</div>
+    </div>
 {% endblock %}
