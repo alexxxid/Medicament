@@ -124,7 +124,7 @@
                         {{ form_label(formFamille.NomFamille) }}
                     </div>
                     <div class="input-field col s3">
-                        <button type="submit" class="btn waves-effect blue darken-3">
+                        <button class="btn waves-effect blue darken-3" onclick="valid(this)" type="submit">
                             Ajouter famille
                             <i class="material-icons right">check</i>
                         </button>
@@ -188,7 +188,7 @@
                         {{ form_label(formComposant.NomComposant) }}
                     </div>
                     <div class="input-field col s3">
-                        <button type="submit" class="btn waves-effect blue darken-3">
+                        <button class="btn waves-effect blue darken-3" onclick="valid(this)" type="submit">
                             Ajouter composant
                             <i class="material-icons right">check</i>
                         </button>
@@ -202,7 +202,7 @@
 {% block _medicaments_Composants_widget %}
     {{ form_widget(form) }}
     <div class="form-group">
-        <button class="btn btn-primary" id="add-composant" type="button">Ajouter un Composant</button>
+        <button class="btn btn-primary waves-effect blue darken-3" id="add-composant" type="button">Ajouter un Composant</button>
     </div>
 {% endblock %}
 {% block _medicaments_Composants_entry_row %}
@@ -220,12 +220,11 @@
                         {{ form_widget(form.Quantite)}}
                     </div>
                 </div>
-                <div class="col input-field s2">
-                    <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
-                </div>
             </div>
             <div class="col input-field s2">
-                <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
+                <button class="btn waves-effect blue darken-3" data-action="delete" data-target="#block_{{id}}">
+                    <i class="material-icons">delete</i>
+                </button>
             </div>
         </div>
     </div>
