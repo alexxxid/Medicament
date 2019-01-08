@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% form_theme formMedicament _self %}
 {% block title %}Gestion Medicaments{% endblock %}
 {% block body %}
     <div class="valign-wrapper">
@@ -123,7 +124,7 @@
                         {{ form_label(formFamille.NomFamille) }}
                     </div>
                     <div class="input-field col s3">
-                        <button class="btn waves-effect blue darken-3" onclick="valid(this);" type="submit">
+                        <button type="submit" class="btn waves-effect blue darken-3">
                             Ajouter famille
                             <i class="material-icons right">check</i>
                         </button>
@@ -144,7 +145,7 @@
                             {{ form_label(formMedicament.NomCommercial) }}
                         </div>
                         <div class="input-field col s6">
-                            {{ form_widget(formMedicament.famille) }}
+                            {{ form_widget(formMedicament.famille,{'attr' : {'class': ' blue darken-3',}}) }}
                             {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
                         </div>
                     </div>
