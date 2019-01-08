@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 
@@ -39,7 +40,10 @@ class MedicamentsType extends AbstractType
                     'allow_add' => true
                 ]
             );
-
+            // ->add('submit', SubmitType::class, [
+            //     'label' => 'Ajouter medaicament',
+            //     'attr' => ['class' => 'btn waves-effect blue darken-3'],$builder->add()
+            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

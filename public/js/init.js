@@ -20,6 +20,9 @@
     });
     $('.tooltipped').tooltip();
     handleDeleteButtons();
+    $('.valider').click(function () {
+      valid(this);
+    });
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 
