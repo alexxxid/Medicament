@@ -113,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modal FAMILLE -->
+        <!-- Modal FAMILLE bite-->
         <div id="modalajouterfam" class="modal bottom-sheet">
             <div class="modal-content container">
                 <h4 class="center">Ajouter Famille</h4>
@@ -219,6 +219,9 @@
                     <div class="col input-field s5">
                         {{ form_widget(form.Quantite)}}
                     </div>
+                </div>
+                <div class="col input-field s2">
+                    <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
                 </div>
             </div>
             <div class="col input-field s2">
