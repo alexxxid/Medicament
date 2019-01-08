@@ -40,10 +40,6 @@ class MedicamentsType extends AbstractType
                     'allow_add' => true
                 ]
             );
-            // ->add('submit', SubmitType::class, [
-            //     'label' => 'Ajouter medaicament',
-            //     'attr' => ['class' => 'btn waves-effect blue darken-3'],$builder->add()
-            // ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -18,11 +18,15 @@
       direction: 'top',
       hoverEnabled: false
     });
-    $('.tooltipped').tooltip();
+    $('.tooltipped').tooltip({
+
+    });
     handleDeleteButtons();
     $('.valider').click(function () {
       valid(this);
     });
+    var e = $("#submitMedicament");
+    e.next().insertBefore(e);
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 

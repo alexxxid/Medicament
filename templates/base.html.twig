@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="row center" id="validerLoginContainer">
-                                            <button class="waves-effect blue darken-3 btn" id="validerLogin" type="submit">Valider</button>
+                                            <button class="waves-effect blue darken-3 btn" onclick="valid(this)" type="submit">Valider</button>
                                             <div class="preloader-wrapper big active" id="loader">
                                                 <div class="spinner-layer spinner-blue-only">
                                                     <div class="circle-clipper left">
@@ -132,7 +132,8 @@
                                         // je récupère le prototype
                                         const tmpl = $('#medicaments_Composants').data('prototype').replace(/__name__/g, index);
                                         // j'incor^por le code au sein de la div
-                                        $('#medicaments_Composants').append(tmpl);
+                                        // $('#medicaments_Composants').append(tmpl);
+                                        $('#medicaments_Composants').closest("form").find("#divAddComposant").append(tmpl);
                                         $('select').not('.disabled').formSelect();
                                         handleDeleteButtons();
                                     })
@@ -162,4 +163,5 @@
                                 </script>
                             {% endblock %}
                         </body>
-</html>
+                    </html>
+                
