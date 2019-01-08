@@ -149,16 +149,30 @@ class MainController extends AbstractController
     /**
      * @Route("/composant" , name="composant")
      */
-    public function composant()
+    public function composant(Composant $composant = null, Request $request, ObjectManager $manager)
     {
-
-
         $repo = $this->getDoctrine()->getRepository(Composant::class);
         $composants = $repo->findall();
 
 
+        if (!$composant) {
+            $composant = new Composant();
+        }
+
+        $formComposant = $this->createForm(ComposantType::class, $composant);
+        $formComposant->handleRequest($request);
+
+        if ($formComposant->isSubmitted() && $formComposant->isValid()) {
+
+            $manager->persist($composant);
+            $manager->flush();
+
+            return $this->redirectToRoute('composant');
+        }
+
         return $this->render('main/composant.html.twig', [
-            'composants' => $composants
+            'composants' => $composants,
+            'formComposant' => $formComposant->createView()
 
         ]);
     }

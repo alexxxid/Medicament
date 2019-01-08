@@ -31,7 +31,7 @@
                         <td>{{ medicament.Effet }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher un Medicament">
+                                <a href="#modalmed{{ medicament.id }}" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher un Medicament">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
@@ -49,5 +49,42 @@
             </section>
         </tbody>
     </table>
+
+    <section class="medicaments">
+        {% for medicament in medicaments %}
+            <!-- Modal Structure -->
+            <div id="modalmed{{ medicament.id }}" class="modal">
+                <div class="modal-content container">
+                    <h4 class="center">Afficher</h4>
+                    <table class="highlight responsive-table">
+                        <thead>
+                            <tr>
+                                <th>idComposant</th>
+                                <th>Nom Composant</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for composer in medicament.composers %}
+                                <section class="composant">
+                                    {% for composant in composants %}
+                                        {% if composant.id == composer.composant %}
+                                            <tr>
+                                                <td>{{ composant.id }}</td>
+                                                <td>{{ composant.NomComposant }}</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                </section>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </section>
 
 {% endblock %}
