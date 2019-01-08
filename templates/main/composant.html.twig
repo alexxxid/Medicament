@@ -22,7 +22,11 @@
                         <td>{{ composant.id }}</td>
                         <td>{{ composant.NomComposant }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
+<<<<<<< HEAD
                             <td width="190px">
+=======
+                            <td width="150px">
+>>>>>>> 459a6236bc79c7bf14f4f3c7d83b96a8debeac1e
                                 <a href="#modifiercomp" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant">
                                     <i class="material-icons">create</i>
                                 </a>
@@ -41,18 +45,27 @@
         <div class="modal-content container">
             <h4 class="center">Modifier Composant</h4>
             <div class="row">
+<<<<<<< HEAD
                 {{ form_start(formComposant) }}
                 <div class="input-field col s9">
                     {{ form_widget(formComposant.NomComposant, {'value':"eeazeazeaz",'attr': {'class': 'validate'}}) }}
                     {{ form_label(formComposant.NomComposant) }}
                 </div>
+=======
+
+                <div class="input-field col s9"></div>
+>>>>>>> 459a6236bc79c7bf14f4f3c7d83b96a8debeac1e
                 <div class="input-field col s3">
                     <button type="submit" class="btn waves-effect blue darken-3">
                         Modifier composant
                         <i class="material-icons right">check</i>
                     </button>
                 </div>
+<<<<<<< HEAD
                 {{ form_end(formComposant) }}
+=======
+
+>>>>>>> 459a6236bc79c7bf14f4f3c7d83b96a8debeac1e
             </div>
 
         </div>

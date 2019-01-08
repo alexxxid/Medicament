@@ -1,5 +1,6 @@
 (function ($) {
   $(function () {
+    $('#loader').toggle();
     $('select').not('.disabled').formSelect();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
@@ -18,6 +19,7 @@
       hoverEnabled: false
     });
     $('.tooltipped').tooltip();
+    handleDeleteButtons();
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 

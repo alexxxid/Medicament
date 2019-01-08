@@ -42,6 +42,7 @@
             </section>
         </tbody>
     </table>
+<<<<<<< HEAD
     <section class="familles">
         {% for famille in familles %}
             <!-- Modal Structure 2-->
@@ -75,6 +76,39 @@
                     </table>
 
                 </div>
+=======
+    <!-- Modal Structure 2-->
+    <div id="modal2" class="modal">
+        <div class="modal-content container">
+            {% set id = 1 %}
+            <h4 class="center">Afficher</h4>
+            <table class="highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>idMedicament</th>
+                        <th>Nom Med</th>
+                        <th>Prix</th>
+                        <th>Contre Indication</th>
+                        <th>Effet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <section class="medicaments">
+                        {% for medicament in medicaments %}
+                            {# {% if medicament.famille.id == {{id}} %} #}
+                            <tr>
+                                <td>{{ medicament.id }}</td>
+                                <td>{{ medicament.NomCommercial }}</td>
+                                <td>{{ medicament.PrixEchantillon }}</td>
+                                <td>{{ medicament.ContreIndication }}</td>
+                                <td>{{ medicament.Effet }}</td>
+                            </tr>
+                            {# {% endif %} #}
+                        {% endfor %}
+                    </section>
+                </tbody>
+            </table>
+>>>>>>> 459a6236bc79c7bf14f4f3c7d83b96a8debeac1e
 
             </div>
 

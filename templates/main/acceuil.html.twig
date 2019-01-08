@@ -1,122 +1,107 @@
 {% extends 'base.html.twig' %}
+{% form_theme formMedicament _self %}
 {% block title %}Gestion Medicaments{% endblock %}
 {% block body %}
     <div class="valign-wrapper">
         <div class="row">
             <div class="col s4">
                 <div class="card  z-depth-5 hoverable light-blue darken-3">
-
                     <div class="card-content  light-blue darken-3">
                         <div class="row">
                             <div class="col s7 valign-wrapper">
                                 <h4 class=" light white-text valign-wrapper">Familles
-                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">{{nbfamilles}}</span>
-
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">
+                                        {{nbfamilles}}</span>
                                 </h4>
                             </div>
                             <div class="col s5"></div>
-
                         </div>
                         <div class="row">
                             <a href="{{path('famille')}}">
-                                <div class="card-image">
+                                <div class="card-image tooltipped" data-position="left" data-tooltip="Afficher les familles">
                                     <ul class="collection black-text">
                                         <section class="famille">
-
                                             {% for famille in familles %}
                                                 {% if loop.index0 < 10 %}
-                                                    <li class="collection-item">{{famille.NomFamille}}</li>
+                                                    <li class="collection-item">
+                                                        {{famille.NomFamille}}</li>
                                                 {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
-
                                 </div>
-
                             </a>
                         </div>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <a href="#modalajouterfam" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-
                                 <i class="material-icons">add</i>
                             </a>
                         {% endif %}
                     </div>
                 </div>
             </div>
-
             <div class="col s4">
                 <div class="card  z-depth-5 hoverable light-blue darken-3">
-
                     <div class="card-content  light-blue darken-3">
                         <div class="row">
                             <div class="col s7 valign-wrapper">
                                 <h4 class=" light white-text valign-wrapper">Médicaments
-                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">{{nbmedicaments}}</span>
-
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">
+                                        {{nbmedicaments}}</span>
                                 </h4>
                             </div>
                             <div class="col s5"></div>
-
                         </div>
                         <div class="row">
                             <a href="{{path('medicament')}}">
-                                <div class="card-image">
+                                <div class="card-image tooltipped" data-position="bottom" data-tooltip="Afficher les médicaments">
                                     <ul class="collection black-text">
                                         <section class="medicament">
                                             {% for medicament in medicaments %}
                                                 {% if loop.index0 < 10 %}
-
-                                                    <li class="collection-item">{{medicament.NomCommercial}}</li>
+                                                    <li class="collection-item">
+                                                        {{medicament.NomCommercial}}</li>
                                                 {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
-
                                 </div>
-
                             </a>
                         </div>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <a href="#modalajoutermed" class="modal-trigger btn-floating halfway-fab btn-large waves-effect waves-light blue accent-2 z-depth-5">
-
                                 <i class="material-icons">add</i>
                             </a>
                         {% endif %}
                     </div>
                 </div>
             </div>
-
             <div class="col s4">
                 <div class="card  z-depth-5 hoverable light-blue darken-3">
-
                     <div class="card-content  light-blue darken-3">
                         <div class="row">
                             <div class="col s7 valign-wrapper">
                                 <h4 class=" light white-text valign-wrapper">Composants
-                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">{{nbcomposants}}</span>
-
+                                    <span class="new badge blue lighten-1 center-align" data-badge-caption="">
+                                        {{nbcomposants}}</span>
                                 </h4>
                             </div>
                             <div class="col s5"></div>
-
                         </div>
                         <div class="row">
                             <a href="{{path('composant')}}">
-                                <div class="card-image">
+                                <div class="card-image tooltipped" data-position="right" data-tooltip="Afficher les composants">
                                     <ul class="collection black-text">
                                         <section class="composant">
                                             {% for composant in composants %}
                                                 {% if loop.index0 < 10 %}
-
-                                                    <li class="collection-item">{{composant.NomComposant}}</li>
+                                                    <li class="collection-item">
+                                                        {{composant.NomComposant}}</li>
                                                 {% endif %}
                                             {% endfor %}
                                         </section>
                                     </ul>
-
                                 </div>
-
                             </a>
                         </div>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
@@ -128,7 +113,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Modal FAMILLE-->
         <div id="modalajouterfam" class="modal bottom-sheet">
             <div class="modal-content container">
@@ -147,56 +131,98 @@
                     </div>
                     {{ form_end(formFamille) }}
                 </div>
-
             </div>
         </div>
         <!-- Modal MEDICAMENT-->
-        <div id="modalajoutermed" class="modal bottom-sheet" style="height:75%;">
+        <div class="modal bottom-sheet" id="modalajoutermed" style="height:75%;">
             <div class="modal-content container">
                 <h4 class="center">Ajouter Medicament</h4>
                 <div class="row">
                     {{ form_start(formMedicament) }}
-
-                    <div class="input-field col s5">
-                        {{ form_widget(formMedicament.NomCommercial) }}
-                        {{ form_label(formMedicament.NomCommercial) }}
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_widget(formMedicament.NomCommercial) }}
+                            {{ form_label(formMedicament.NomCommercial) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_widget(formMedicament.famille,{'attr' : {'class': ' blue darken-3',}}) }}
+                            {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
+                        </div>
                     </div>
-                    <div class="input-field col s5">
-                        {{ form_widget(formMedicament.famille) }}
-                        {# {{ form_label(formMedicament.famille, 'Choisir une famille') }} #}
+                    <div class="row">
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.PrixEchantillon) }}
+                            {{ form_label(formMedicament.PrixEchantillon) }}</div>
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.ContreIndication) }}
+                            {{ form_label(formMedicament.ContreIndication) }}</div>
+                        <div class="input-field col s4">
+                            {{ form_widget(formMedicament.Effet) }}
+                            {{ form_label(formMedicament.Effet) }}</div>
                     </div>
-                    <div class="input-field col s1">
-                        <button type="submit" class="btn waves-effect blue darken-3">
-                            Ajouter composant
-                            <i class="material-icons right">check</i>
-                        </button>
+                    <div class="class"></div>
+                    <div class="row">
+                        <div class="input-field col s5">
+                            <div class="row center">
+                                <div class="input-field col s12">
+                                    <button class="btn waves-effect blue darken-3" style="margin:auto;" type="submit">
+                                        Ajouter Médicament
+                                        <i class="material-icons right">check</i>
+                                    </button>
+                                </div>
+                            </div>
+                            {{ form_end(formMedicament) }}
+                        </div>
                     </div>
-                    {{ form_end(formMedicament) }}
+                </div>
+            </div>
+            <!-- Modal COMPOSANT-->
+            <div id="modalajoutercom" class="modal bottom-sheet">
+                <div class="modal-content container">
+                    <h4 class="center">Ajouter Composant</h4>
+                    <div class="row">
+                        {{ form_start(formComposant) }}
+                        <div class="input-field col s9">
+                            {{ form_widget(formComposant.NomComposant, {'attr': {'class': 'validate',}}) }}
+                            {{ form_label(formComposant.NomComposant) }}
+                        </div>
+                        <div class="input-field col s3">
+                            <button type="submit" class="btn waves-effect blue darken-3">
+                                Ajouter composant
+                                <i class="material-icons right">check</i>
+                            </button>
+                        </div>
+                        {{ form_end(formComposant) }}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal COMPOSANT-->
-    <div id="modalajoutercom" class="modal bottom-sheet">
-        <div class="modal-content container">
-            <h4 class="center">Ajouter Composant</h4>
+    {% endblock %}
+    {% block _medicaments_Composants_widget %}
+        {{ form_widget(form) }}
+        <div class="form-group">
+            <button class="btn btn-primary" id="add-composant" type="button">Ajouter un Composant</button>
+        </div>
+    {% endblock %}
+    {% block _medicaments_Composants_entry_row %}
+        {{ form_widget(form) }}
+    {% endblock %}
+    {% block _medicaments_Composants_entry_widget %}
+        <div class="form-group" id="block_{{id}}">
             <div class="row">
-                {{ form_start(formComposant) }}
-                <div class="input-field col s9">
-                    {{ form_widget(formComposant.NomComposant, {'attr': {'class': 'validate',}}) }}
-                    {{ form_label(formComposant.NomComposant) }}
+                <div class="col input-field s10">
+                    <div class="row">
+                        <div class="col input-field s5">
+                            {{ form_widget(form.composant)}}
+                        </div>
+                        <div class="col input-field s5">
+                            {{ form_widget(form.Quantite)}}
+                        </div>
+                    </div>
                 </div>
-                <div class="input-field col s3">
-                    <button type="submit" class="btn waves-effect blue darken-3">
-                        Ajouter composant
-                        <i class="material-icons right">check</i>
-                    </button>
+                <div class="col input-field s2">
+                    <button class="btn btn-danger" data-action="delete" data-target="#block_{{id}}" type="button">X</button>
                 </div>
-                {{ form_end(formComposant) }}
             </div>
-
         </div>
-
-    </div>
-
-{% endblock %}
+    {% endblock %}
