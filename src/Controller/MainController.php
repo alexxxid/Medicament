@@ -142,8 +142,13 @@ class MainController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Medicaments::class);
         $medicaments = $repo->findAll();
 
+        $repo = $this->getDoctrine()->getRepository(Composant::class);
+        $composants = $repo->findall();
+
+
         return $this->render('main/medicament.html.twig', [
-            'medicaments' => $medicaments
+            'medicaments' => $medicaments,
+            'composants' => $composants
         ]);
     }
     /**
