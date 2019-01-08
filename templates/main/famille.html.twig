@@ -21,9 +21,10 @@
                     <tr>
                         <td>{{ famille.id }}</td>
                         <td>{{ famille.NomFamille }}</td>
+
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modal2" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher une Famille">
+                                <a href="#modalfam{{ famille.id }}" class="modal-trigger btn waves-effect blue darken-3 tooltipped" id="afficher{{ famille.id }}" data-position="top" data-tooltip="Afficher une Famille">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
@@ -41,40 +42,43 @@
             </section>
         </tbody>
     </table>
-    <!-- Modal Structure 2-->
-    <div id="modal2" class="modal">
-        <div class="modal-content container">
-            {% set id = 1 %}
-            <h4 class="center">Afficher</h4>
-            <table class="highlight responsive-table">
-                <thead>
-                    <tr>
-                        <th>idMedicament</th>
-                        <th>Nom Med</th>
-                        <th>Prix</th>
-                        <th>Contre Indication</th>
-                        <th>Effet</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <section class="medicaments">
-                        {% for medicament in medicaments %}
-                            {# {% if medicament.famille.id == {{id}} %} #}
+    <section class="familles">
+        {% for famille in familles %}
+            <!-- Modal Structure 2-->
+            <div id="modalfam{{ famille.id }}" class="modal">
+                <div class="modal-content container">
+                    <h4 class="center">Afficher</h4>
+                    <table class="highlight responsive-table">
+                        <thead>
                             <tr>
-                                <td>{{ medicament.id }}</td>
-                                <td>{{ medicament.NomCommercial }}</td>
-                                <td>{{ medicament.PrixEchantillon }}</td>
-                                <td>{{ medicament.ContreIndication }}</td>
-                                <td>{{ medicament.Effet }}</td>
+                                <th>idMedicament</th>
+                                <th>Nom Med</th>
+                                <th>Prix</th>
+                                <th>Contre Indication</th>
+                                <th>Effet</th>
                             </tr>
-                            {# {% endif %} #}
-                        {% endfor %}
-                    </section>
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            <section class="medicaments">
+                                {% for medicament in famille.medicaments %}
+                                    <tr>
+                                        <td>{{ medicament.id }}</td>
+                                        <td>{{ medicament.NomCommercial }}</td>
+                                        <td>{{ medicament.PrixEchantillon }}</td>
+                                        <td>{{ medicament.ContreIndication }}</td>
+                                        <td>{{ medicament.Effet }}</td>
+                                    </tr>
+                                {% endfor %}
 
-        </div>
+                            </section>
+                        </tbody>
+                    </table>
 
-    </div>
+                </div>
+
+            </div>
+
+        {% endfor %}
+    </section>
 
 {% endblock %}
