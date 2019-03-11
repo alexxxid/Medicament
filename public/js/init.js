@@ -1,6 +1,7 @@
 (function ($) {
   $(function () {
     $('#loader').toggle();
+    $("#loaderContainer").hide();
     $('select').not('.disabled').formSelect();
     $('.sidenav').sidenav();
     $('.parallax').parallax();
@@ -27,6 +28,7 @@
     });
     var e = $("#submitMedicament");
     e.next().insertBefore(e);
+
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 

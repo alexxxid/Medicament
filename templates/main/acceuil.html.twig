@@ -177,11 +177,11 @@
                 <h4 class="center">Ajouter Composant</h4>
                 <div class="row">
                     {{ form_start(formComposant) }}
-                    <div class="input-field col s12">
+                    <div class="input-field col s9">
                         {{ form_widget(formComposant.NomComposant, {'attr': {'class': 'validate',}}) }}
                         {{ form_label(formComposant.NomComposant) }}
                     </div>
-                    <div class="input-field col s12">
+                    <div class="input-field col s3">
                         <button class="btn waves-effect blue darken-3" onclick="valid(this)" type="submit">
                             Ajouter composant
                             <i class="material-icons right">check</i>
