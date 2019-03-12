@@ -150,7 +150,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        {{ form_widget(formMedicament.PrixEchantillon) }}
+                        {{ form_widget(formMedicament.PrixEchantillon, {'attr': {'class': 'required',}}) }}
                         {{ form_label(formMedicament.PrixEchantillon) }}</div>
                     <div class="input-field col s4">
                         {{ form_widget(formMedicament.ContreIndication) }}
@@ -201,16 +201,16 @@
         <div class="row">
             <div class="col input-field s10">
                 <div class="row">
-                    <div class="col input-field s5">
-                        {{ form_widget(form)}}
+                    <div class="col input-field s6">
+                        {{ form_widget(form.composant)}}
                     </div>
                     <div class="col input-field s5">
-                        {{ form_widget(form.Quantite)}}
+                        {{ form_widget(form.Quantite, {'attr': {'class': 'required',}})}}
                         {{ form_label(form.Quantite)}}
                     </div>
                 </div>
             </div>
-            <div class="col input-field s2">
+            <div class="col input-field s1">
                 <button class="btn waves-effect blue darken-3" data-action="delete" data-target="#block_{{id}}">
                     <i class="material-icons">delete</i>
                 </button>
