@@ -30,7 +30,6 @@ class ComposerType extends AbstractType
                     'placeholder' => "Quantité du Composant"
                 ]
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

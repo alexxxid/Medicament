@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 
+use App\Entity\Composer;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -41,7 +42,7 @@ class Medicaments
     private $Effet;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Composer", mappedBy="medicament")
+     * @ORM\OneToMany(targetEntity="App\Entity\Composer", mappedBy="medicament", cascade={"persist"})
      */
     private $composers;
     /**
@@ -55,53 +56,53 @@ class Medicaments
         $this->composers = new ArrayCollection();
     }
 
-    public function getId() : ? int
+    public function getId(): ? int
     {
         return $this->id;
     }
 
-    public function getNomCommercial() : ? string
+    public function getNomCommercial(): ? string
     {
         return $this->NomCommercial;
     }
 
-    public function setNomCommercial(string $NomCommercial) : self
+    public function setNomCommercial(string $NomCommercial): self
     {
         $this->NomCommercial = $NomCommercial;
 
         return $this;
     }
 
-    public function getPrixEchantillon() : ? float
+    public function getPrixEchantillon(): ? float
     {
         return $this->PrixEchantillon;
     }
 
-    public function setPrixEchantillon(float $PrixEchantillon) : self
+    public function setPrixEchantillon(float $PrixEchantillon): self
     {
         $this->PrixEchantillon = $PrixEchantillon;
 
         return $this;
     }
 
-    public function getContreIndication() : ? string
+    public function getContreIndication(): ? string
     {
         return $this->ContreIndication;
     }
 
-    public function setContreIndication(? string $ContreIndication) : self
+    public function setContreIndication(? string $ContreIndication): self
     {
         $this->ContreIndication = $ContreIndication;
 
         return $this;
     }
 
-    public function getEffet() : ? string
+    public function getEffet(): ? string
     {
         return $this->Effet;
     }
 
-    public function setEffet(string $Effet) : self
+    public function setEffet(string $Effet): self
     {
         $this->Effet = $Effet;
 
@@ -112,12 +113,12 @@ class Medicaments
      * @return Collection|Composer[]
      */
 
-    public function getComposers() : Collection
+    public function getComposers(): Collection
     {
         return $this->composers;
     }
 
-    public function addComposers(Composer $composers) : self
+    public function addComposers(Composer $composers): self
     {
         if (!$this->composers->contains($composers)) {
             $this->composers[] = $composers;
@@ -127,25 +128,24 @@ class Medicaments
         return $this;
     }
 
-    public function removeComposers(Composer $composers, ObjectManager $manager) : self
+    public function removeComposers(Composer $composers, ObjectManager $manager): self
     {
         if ($this->composers->contains($composers)) {
             $this->composers->removeElement($composers);
             // set the owning side to null (unless already changed)
             $manager->remove($composers);
             $manager->flush();
-
         }
 
         return $this;
     }
 
-    public function getFamille() : ? Famille
+    public function getFamille(): ? Famille
     {
         return $this->famille;
     }
 
-    public function setFamille(? Famille $famille) : self
+    public function setFamille(? Famille $famille): self
     {
         $this->famille = $famille;
 

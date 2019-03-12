@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Form\ComposerType;
+use App\Form\ComposantType;
 use App\Entity\Medicaments;
 use Proxies\__CG__\App\Entity\Famille;
 use Symfony\Component\Form\AbstractType;
@@ -13,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
+use App\Entity\Composer;
 
 class MedicamentsType extends AbstractType
 {
@@ -26,14 +28,13 @@ class MedicamentsType extends AbstractType
                 'choice_attr' => [
                     'class' => 'dropdown-content blue darken-3',
                     'id' => 'MedicamentFormFamilleDd',
-
                 ],
             ))
             ->add('PrixEchantillon')
             ->add('ContreIndication')
             ->add('Effet')
             ->add(
-                'Composants',
+                'composers',
                 CollectionType::class,
                 [
                     'entry_type' => ComposerType::class,
