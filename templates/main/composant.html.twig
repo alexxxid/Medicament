@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Composants{% endblock %}
-
 {% block body %}
-
     <table class="highlight responsive-table">
         <thead>
             <tr>
@@ -14,16 +11,17 @@
                 {% endif %}
             </tr>
         </thead>
-
         <tbody>
             <section class="composants">
                 {% for composant in composants %}
                     <tr>
-                        <td>{{ composant.id }}</td>
-                        <td>{{ composant.NomComposant }}</td>
+                        <td>
+                            {{ composant.id }}</td>
+                        <td>
+                            {{ composant.NomComposant }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="150px">
-                                <a href="#modifiercomp" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant">
+                                <a class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant" href="#modalmodifier{{ composant.id}}">
                                     <i class="material-icons">create</i>
                                 </a>
                                 <a href="{{ path('supprimerComposant', {'id': composant.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un composant">
@@ -37,21 +35,22 @@
         </tbody>
     </table>
     <!-- Modal -->
-    <div id="modifiercomp" class="modal bottom-sheet">
-        <div class="modal-content container">
-            <h4 class="center">Modifier Composant</h4>
-            <div class="row">
-
-                <div class="input-field col s9"></div>
-                <div class="input-field col s3">
-                    <button type="submit" class="btn waves-effect blue darken-3">
-                        Modifier composant
-                        <i class="material-icons right">check</i>
-                    </button>
+    {% for composant in composants %}
+        <div class="modal bottom-sheet" id="modalmodifier{{ composant.id}}">
+            <div class="modal-content container">
+                <h4 class="center">Modifier Composant</h4>
+                <div class="row">
+                    <div class="input-field col s9">
+                        <input onfocusout="modifierComposant({{ composant.id}});"></input>
+                    </div>
+                    <div class="input-field col s3">
+                        <a class="btn waves-effect blue darken-3" href="{{path('modifierComposant', {'id': 'iddefaut' , 'nomComposant': 'nomCompo' })}}" id="ALED{{composant.id}}">
+                            Modifier composant
+                            <i class="material-icons right">check</i>
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
-
-    </div>
+    {% endfor %}
 {% endblock %}
