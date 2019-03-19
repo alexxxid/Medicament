@@ -169,6 +169,16 @@
                                         if ($("input").val() === "") {} else {}
                                     }
                                 </script>
+                                <script>
+                                    function modifierComposant(id) {
+                                        alert(id);
+                                        var nomCompo = "oskuuuuuuuuuuuuuuuur";
+                                        // alert(lacbon);
+                                        var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("nomCompo", nomCompo);
+                                        $('#ALED' + id).attr("href", temp);
+                                        alert($('#ALED' + id).attr("href"));
+                                    }
+                                </script>
                             {% endblock %}
                         </body>
                     </html>
