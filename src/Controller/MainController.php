@@ -159,7 +159,7 @@ class MainController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Composant::class);
         $composants = $repo->findall();
-
+        
 
         if (!$composant) {
             $composant = new Composant();
@@ -237,19 +237,5 @@ class MainController extends AbstractController
         $manager->flush();
 
         return $this->redirectToRoute('composant');
-    }
-    /**
-     * @Route("/composant/{id}/{nomComposant}/modifierComposant", name="modifierComposant")
-     */
-    public function modifierComposant(Composant $composant, string $nomComposant) {
-        $manager =$this->getDoctrine()->getManager();
-
-        $composant->setNomComposant($nomComposant);
-        $manager->persist($composant);
-        $manager->flush();
-
-        return $this->redirectToRoute('composant');
-
-        
     }
 }
