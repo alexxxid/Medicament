@@ -158,3 +158,6 @@ i {
   user-select: none;
   -moz-user-focus: unset;
 }
+li>span{
+  color:#1565C0 !important;
+}
