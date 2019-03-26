@@ -142,13 +142,17 @@ class MainController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Medicaments::class);
         $medicaments = $repo->findAll();
 
+        $repo = $this->getDoctrine()->getRepository(Famille::class);
+        $familles = $repo->findAll();
+
         $repo = $this->getDoctrine()->getRepository(Composant::class);
         $composants = $repo->findall();
 
 
         return $this->render('main/medicament.html.twig', [
             'medicaments' => $medicaments,
-            'composants' => $composants
+            'composants' => $composants,
+            'familles' => $familles
         ]);
     }
     /**
@@ -238,17 +242,46 @@ class MainController extends AbstractController
         return $this->redirectToRoute('composant');
     }
     /**
-     * @Route("/composant/{id}/{nomComposant}/modifierComposant", name="modifierComposant")
+     * @Route("/composant/{id}/{newNom}/modifierComposant", name="modifierComposant")
      */
-    public function modifierComposant(Composant $composant, string $nomComposant) {
+    public function modifierComposant(Composant $composant, string $newNom) {
         $manager =$this->getDoctrine()->getManager();
 
-        $composant->setNomComposant($nomComposant);
+        $composant->setNomComposant($newNom);
         $manager->persist($composant);
         $manager->flush();
 
-        return $this->redirectToRoute('composant');
+        return $this->redirectToRoute('composant');        
+    }
 
-        
+    /**
+     * @Route("/famille/{id}/{newNom}/modifierFamille", name="modifierFamille")
+     */
+    public function modifierFamille(Famille $famille, string $newNom) {
+        $manager =$this->getDoctrine()->getManager();
+
+        $famille->setNomFamille($newNom);
+        $manager->persist($famille);
+        $manager->flush();
+
+        return $this->redirectToRoute('famille');        
+    }
+
+    /**
+     * @Route("/medicament/{id}/{newNom}/{newFamille}/{newPrix}/{newContreIndication}/{newEffet}/modifierMedicament", name="modifierMedicament")
+     */
+    public function modifierMedicament(Medicaments $medicament, $newNom='' , $newFamille='' ,  $newPrix='' ,  $newContreIndication='' , $newEffet='' ) {
+        $manager =$this->getDoctrine()->getManager();
+
+        $medicament->setNomCommercial($newNom);
+        $medicament->setFamille($newFamille);
+        $medicament->setPrixEchantillon($newPrix);
+        $medicament->setContreIndication($newContreIndication);
+        $medicament->setEffet($newEffet);
+
+        $manager->persist($medicament);
+        $manager->flush();
+
+        return $this->redirectToRoute('medicament');        
     }
 }

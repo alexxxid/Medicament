@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Familles{% endblock %}
-
 {% block body %}
-
     <table class="highlight responsive-table">
         <thead>
             <tr>
@@ -14,22 +11,22 @@
                 {% endif %}
             </tr>
         </thead>
-
         <tbody>
             <section class="familles">
                 {% for famille in familles %}
                     <tr>
-                        <td>{{ famille.id }}</td>
-                        <td>{{ famille.NomFamille }}</td>
-
+                        <td>
+                            {{ famille.id }}</td>
+                        <td>
+                            {{ famille.NomFamille }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modalfam{{ famille.id }}" class="modal-trigger btn waves-effect blue darken-3 tooltipped" id="afficher{{ famille.id }}" data-position="top" data-tooltip="Afficher une Famille">
+                                <a class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher une Famille" href="#modalfam{{ famille.id }}" id="afficher{{ famille.id }}">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
                                 </a>
-                                <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modified une Famille">
+                                <a class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifier une Famille" href="#modalmodifier{{ famille.id}}">
                                     <i class="material-icons">create</i>
                                 </a>
                                 <a href="{{ path('supprimerFamille', {'id': famille.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer une Famille">
@@ -45,9 +42,10 @@
     <section class="familles">
         {% for famille in familles %}
             <!-- Modal Structure 2-->
-            <div id="modalfam{{ famille.id }}" class="modal">
+            <div class="modal" id="modalfam{{ famille.id }}">
                 <div class="modal-content container">
-                    <h4 class="center">{{ famille.NomFamille }}</h4>
+                    <h4 class="center">
+                        {{ famille.NomFamille }}</h4>
                     <table class="highlight responsive-table">
                         <thead>
                             <tr>
@@ -62,23 +60,42 @@
                             <section class="medicaments">
                                 {% for medicament in famille.medicaments %}
                                     <tr>
-                                        <td>{{ medicament.id }}</td>
-                                        <td>{{ medicament.NomCommercial }}</td>
-                                        <td>{{ medicament.PrixEchantillon }}</td>
-                                        <td>{{ medicament.ContreIndication }}</td>
-                                        <td>{{ medicament.Effet }}</td>
+                                        <td>
+                                            {{ medicament.id }}</td>
+                                        <td>
+                                            {{ medicament.NomCommercial }}</td>
+                                        <td>
+                                            {{ medicament.PrixEchantillon }}</td>
+                                        <td>
+                                            {{ medicament.ContreIndication }}</td>
+                                        <td>
+                                            {{ medicament.Effet }}</td>
                                     </tr>
                                 {% endfor %}
-
                             </section>
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
-
         {% endfor %}
     </section>
-
+    <!-- Modal -->
+    {% for famille in familles %}
+        <div class="modal bottom-sheet" id="modalmodifier{{ famille.id}}">
+            <div class="modal-content container">
+                <h4 class="center">Modifier Famille</h4>
+                <div class="row">
+                    <div class="input-field col s9">
+                        <input onfocusout="modifier({{ famille.id}},$(this).val());" value="{{ famille.NomFamille }}"></input>
+                    </div>
+                    <div class="input-field col s3">
+                        <a class="btn waves-effect blue darken-3" href="{{path('modifierFamille', {'id': 'iddefaut' , 'nouveauNom': 'nouveauNom' })}}" id="ALED{{famille.id}}">
+                            Modifier Famille
+                            <i class="material-icons right">check</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

@@ -1,3 +1,12 @@
+function modifier(id, newnom) {
+  if (Array.isArray(newnom)) {
+    // alert(newnom);
+  }
+  // alert("ca marche pas ");
+  var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("newNom", newnom);
+  $('#ALED' + id).attr("href", temp);
+}
+
 (function ($) {
   $(function () {
     $('#loader').toggle();
@@ -6,7 +15,21 @@
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.tabs').tabs();
-    $('.dropdown-trigger').dropdown();
+    $('.dropdown-trigger').dropdown({
+      onCloseEnd: function () {
+        var idMed = $(this).siblings("select").attr("id").replace("familleMed", "");
+        // alert($(this).children(".selected").text());
+        modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
+
+        alert($(this).focusedIndex);
+      }
+    }
+    );
+    $(".dropdown-content.select-dropdown").focusout(function () {
+      var idMed = $(this).siblings("select").attr("id").replace("familleMed", "");
+      // alert($(this).children(".selected").text());
+      modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
+    });
     $('ul.tabs').tabs({
       swipeable: true,
       responsiveThreshold: 1920,
@@ -32,6 +55,9 @@
   }); // end of document ready
 })(jQuery); // end of jQuery name space 
 
+function fuction() {
+
+}
 
 $(document).ready(function () {
   // M.updateTextFields();

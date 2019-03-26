@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
             <title>
-                {% block title %}Welcome!{% endblock %}
+                {% block title %}Welcome!
+                {% endblock %}
             </title>
             {% block stylesheets %}
                 <!-- CSS -->
@@ -25,7 +26,7 @@
                                         <li>
                                             <a class="modal-trigger waves-effect" href="#modal1">Login</a>
                                         </li>
-                                        {% else %}
+                                    {% else %}
                                         <li class="nav-item">
                                             <a href="{{ path('logout') }}">
                                                 Logout
@@ -167,17 +168,7 @@
                                         if ($("input").val() === "") {} else {}
                                     }
                                 </script>
-                                <script>
-                                    function modifierComposant(id) {
-                                        alert(id);
-                                        var nomCompo = "oskuuuuuuuuuuuuuuuur";
-                                        // alert(lacbon);
-                                        var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("nomCompo", nomCompo);
-                                        $('#ALED' + id).attr("href", temp);
-                                        alert($('#ALED' + id).attr("href"));
-                                    }
-                                </script>
+                                <script></script>
                             {% endblock %}
                         </body>
                     </html>
-                

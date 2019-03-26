@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block title %}Composants{% endblock %}
+{% block title %}Composants
+{% endblock %}
 {% block body %}
     <table class="highlight responsive-table">
         <thead>
@@ -21,7 +22,7 @@
                             {{ composant.NomComposant }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="150px">
-                                <a class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant" href="#modalmodifier{{ composant.id}}">
+                                <a class=" modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifer un composant" href="#modalmodifier{{ composant.id}}">
                                     <i class="material-icons">create</i>
                                 </a>
                                 <a href="{{ path('supprimerComposant', {'id': composant.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un composant">
@@ -41,11 +42,11 @@
                 <h4 class="center">Modifier Composant</h4>
                 <div class="row">
                     <div class="input-field col s9">
-                        <input onfocusout="modifierComposant({{ composant.id}});"></input>
+                        <input onfocusout="modifier({{ composant.id}},$(this).val());" value="{{ composant.NomComposant }}"></input>
                     </div>
                     <div class="input-field col s3">
-                        <a class="btn waves-effect blue darken-3" href="{{path('modifierComposant', {'id': 'iddefaut' , 'nomComposant': 'nomCompo' })}}" id="ALED{{composant.id}}">
-                            Modifier composant
+                        <a class="btn waves-effect blue darken-3" href="{{path('modifierComposant', {'id': 'iddefaut' , 'newNom': 'newNom'})}}" id="ALED{{composant.id}}">
+                            Modifier Composant
                             <i class="material-icons right">check</i>
                         </a>
                     </div>

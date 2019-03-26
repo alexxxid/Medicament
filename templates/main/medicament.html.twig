@@ -1,9 +1,7 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Medicaments{% endblock %}
-
+{% block title %}Medicaments
+{% endblock %}
 {% block body %}
-
     <table class="highlight responsive-table">
         <thead>
             <tr>
@@ -18,7 +16,6 @@
                 {% endif %}
             </tr>
         </thead>
-
         <tbody>
             <section class="medicaments">
                 {% for medicament in medicaments %}
@@ -31,12 +28,12 @@
                         <td>{{ medicament.Effet }}</td>
                         {% if app.user.getRoles() == ['ROLE_ADMIN'] %}
                             <td width="190px">
-                                <a href="#modalmed{{ medicament.id }}" class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher un Medicament">
+                                <a class="modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Afficher un Medicament" href="#modalmed{{ medicament.id }}">
                                     <i class="material-icons">
                                         calendar_view_day
                                     </i>
                                 </a>
-                                <a href="" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifier un Medicament">
+                                <a class=" modal-trigger btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Modifier un Medicament" href="#modalmodifiermed{{medicament.id}}">
                                     <i class="material-icons">create</i>
                                 </a>
                                 <a href="{{ path('supprimerMedicament', {'id': medicament.id }) }}" class="btn waves-effect blue darken-3 tooltipped" data-position="top" data-tooltip="Supprimer un Medicament">
@@ -49,11 +46,10 @@
             </section>
         </tbody>
     </table>
-
     <section class="medicaments">
         {% for medicament in medicaments %}
             <!-- Modal Structure -->
-            <div id="modalmed{{ medicament.id }}" class="modal">
+            <div class="modal" id="modalmed{{ medicament.id }}">
                 <div class="modal-content container">
                     <h4 class="center">{{ medicament.NomCommercial }}</h4>
                     <table class="highlight responsive-table">
@@ -74,17 +70,91 @@
                                             </tr>
                                         {% endif %}
                                     {% endfor %}
-
                                 </section>
                             {% endfor %}
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
-
         {% endfor %}
     </section>
-
+    <!-- Modal MEDICAMENT
+                                        OLALALA IL FAUT  FINIR CA CA MARCHE PAS TRES BIEN-->
+    {% for medicament in medicaments %}
+        <div class="modal" id="modalmodifiermed{{medicament.id}}" style="height:75%;">
+            <div class="modal-content container">
+                <h4 class="center">Modifier Medicament</h4>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="nomMed{{medicament.id}}" value="{{ medicament.NomCommercial }}"></input>
+                    </div>
+                    <div class="input-field col s6 ">
+                        <select id="familleMed{{medicament.id}}" onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);">
+                            {% for famille in familles %}
+                                {% if famille.NomFamille == medicament.famille.NomFamille %}
+                                    <option selected>{{ famille.NomFamille}}</option>
+                                {% else %}
+                                    <option>{{ famille.NomFamille}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="prixMed{{medicament.id}}" value="{{ medicament.PrixEchantillon }}"></input>
+                    </div>
+                    <div class="input-field col s4">
+                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="contreIndicationMed{{medicament.id}}" value="{{medicament.ContreIndication}}"></input>
+                    </div>
+                    <div class="input-field col s4">
+                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="effetMed{{medicament.id}}" value="{{ medicament.Effet }}"></input>
+                    </div>
+                </div>
+                <div id="divAddComposant"></div>
+                <div class="row center" id="submitMedicament">
+                    <div class="input-field col s12">
+                        <a class="btn waves-effect blue darken-3" href="{{path('modifierMedicament', {'id': 'iddefaut' , 'newNom': 'newNom', 'newFamille' : 'newFamille', 'newPrix' : 'newPrix', 'newContreIndication' : 'newContreIndication' , 'newEffet' : 'newEffet' })}}" id="ALED{{medicament.id}}">
+                            Modifier Medicament
+                            <i class="material-icons right">check</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+{% block _medicaments_Composants_entry_row %}
+    {{ form_widget(form) }}
+{% endblock %}
+{% block _medicaments_Composants_entry_widget %}
+    <div class="form-group" id="block_{{id}}">
+        <div class="row">
+            <div class="col input-field s10">
+                <div class="row">
+                    <div class="col input-field s5">
+                        {{ form_widget(form.composant)}}
+                    </div>
+                    <div class="col input-field s5">
+                        {{ form_widget(form.Quantite)}}
+                        {{ form_label(form.Quantite)}}
+                    </div>
+                </div>
+            </div>
+            <div class="col input-field s2">
+                <button class="btn waves-effect blue darken-3" data-action="delete" data-target="#block_{{id}}">
+                    <i class="material-icons">delete</i>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block _medicaments_Composants_widget %}
+    {{ form_widget(form) }}
+    <div class="form-group">
+        <div class="row center">
+            <button class="btn btn-primary waves-effect blue darken-3" id="add-composant" type="button">Ajouter un Composant<i class="material-icons right">add</i>
+            </button>
+        </div>
+    </div>
 {% endblock %}
