@@ -27,10 +27,10 @@ class ComposerType extends AbstractType
             ))
             ->add('Quantite', NumberType::class, [
                 'attr' => [
-                    'placeholder' => "Quantité du Composant"
-                ]
+                    'type' => 'number'
+                ],
+                
             ]);
-
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -6,9 +6,10 @@ use App\Entity\Famille;
 use App\Entity\Composer;
 use App\Entity\Composant;
 use App\Form\FamilleType;
-use App\Form\MedicamentsType;
+use App\Form\ComposerType;
 use App\Entity\Medicaments;
 use App\Form\ComposantType;
+use App\Form\MedicamentsType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
@@ -48,13 +49,11 @@ class MainController extends AbstractController
      * @Route("/logout", name="logout")
      */
     public function logout()
-    {
-
-    }
+    { }
     /**
      * @Route("/acceuil", name="acceuil")
      */
-    public function acceuil(Composant $composant = null, Famille $famille = null, Medicaments $medicament = null, Request $request, ObjectManager $manager)
+    public function acceuil(Composant $composant = null, Composer $composer = null, Famille $famille = null, Medicaments $medicament = null, Request $request, ObjectManager $manager)
     {
         //AFFICHAGE DU NOMBRE DANS LA CARD
         $repo = $this->getDoctrine()->getRepository(Famille::class);
@@ -73,9 +72,11 @@ class MainController extends AbstractController
         if (!$composant) {
             $composant = new Composant();
         }
-
         if (!$famille) {
             $famille = new Famille();
+        }
+        if (!$medicament) {
+            $medicament = new Medicaments();
         }
 
         $formComposant = $this->createForm(ComposantType::class, $composant);
@@ -162,7 +163,7 @@ class MainController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Composant::class);
         $composants = $repo->findall();
-
+        
 
         if (!$composant) {
             $composant = new Composant();
