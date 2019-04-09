@@ -1,4 +1,5 @@
 function modifier(id, newnom) {
+  $('#ALED' + id).attr("href", "/medicament/iddefaut/newNom/newFamille/newPrix/newContreIndication/newEffet/modifierMedicament");
   if (Array.isArray(newnom)) {
 
     var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("newNom", newnom[0]).replace("newFamille", newnom[1]).replace("newPrix", newnom[2]).replace("newContreIndication", newnom[3]).replace("newEffet", newnom[4]);
@@ -6,7 +7,6 @@ function modifier(id, newnom) {
   } else {
     var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("newNom", newnom);
   }
-
   $('#ALED' + id).attr("href", temp);
 }
 
@@ -18,20 +18,20 @@ function modifier(id, newnom) {
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.tabs').tabs();
-    $('.dropdown-trigger').dropdown({
-      onCloseEnd: function () {
-        var idMed = $(this).siblings("select").id("id");
-        alert(idMed);
-        // alert($(this).children(".selected").text());
-        modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
+    // $('.dropdown-trigger').dropdown({
+    //   onCloseEnd: function () {
+    //     var idMed = $(this).siblings("select").attr("id");
+    //     alert(idMed);
+    //     // alert($(this).children(".selected").text());
+    //     modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
 
-        alert($(this).focusedIndex);
-      }
-    }
-    );
-    $(".dropdown-content.select-dropdown").focusout(function () {
+    //     alert($(this).focusedIndex);
+    //   }
+    // }
+    // );
+    $(".dropdown-trigger").focusout(function () {
       var idMed = $(this).siblings("select").attr("id").replace("familleMed", "");
-      // alert($(this).children(".selected").text());
+
       modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
     });
     $('ul.tabs').tabs({
