@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
-{% block title %}Familles{% endblock %}
+{% block title %}Familles
+{% endblock %}
 {% block body %}
     <table class="highlight responsive-table">
         <thead>
@@ -87,15 +88,14 @@
                 <div class="row">
                     <div class="input-field col s9">
                         <input onfocusout="modifier({{ famille.id}},$(this).val());" value="{{ famille.NomFamille }}"></input>
-                    </div>
-                    <div class="input-field col s3">
-                        <a class="btn waves-effect blue darken-3" href="{{path('modifierFamille', {'id': 'iddefaut' , 'nouveauNom': 'nouveauNom' })}}" id="ALED{{famille.id}}">
-                            Modifier Famille
-                            <i class="material-icons right">check</i>
-                        </a>
-                    </div>
+                </div>
+                <div class="input-field col s3">
+                    <a class="btn waves-effect blue darken-3" href="{{path('modifierFamille', {'id': 'iddefaut' , 'newNom': 'newNom' })}}" id="ALED{{famille.id}}">
+                        Modifier Famille
+                        <i class="material-icons right">check</i>
+                    </a>
                 </div>
             </div>
         </div>
-    {% endfor %}
-{% endblock %}
+    </div>
+{% endfor %}{% endblock %}
