@@ -78,8 +78,7 @@
             </div>
         {% endfor %}
     </section>
-    <!-- Modal MEDICAMENT
-                                        OLALALA IL FAUT  FINIR CA CA MARCHE PAS TRES BIEN-->
+    <!-- Modal MEDICAMENT-->
     {% for medicament in medicaments %}
         <div class="modal" id="modalmodifiermed{{medicament.id}}" style="height:75%;">
             <div class="modal-content container">
@@ -87,74 +86,48 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="nomMed{{medicament.id}}" value="{{ medicament.NomCommercial }}"></input>
-                    </div>
-                    <div class="input-field col s6 ">
-                        <select id="familleMed{{medicament.id}}" onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);">
-                            {% for famille in familles %}
-                                {% if famille.NomFamille == medicament.famille.NomFamille %}
-                                    <option selected>{{ famille.NomFamille}}</option>
-                                {% else %}
-                                    <option>{{ famille.NomFamille}}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
-                    </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="prixMed{{medicament.id}}" value="{{ medicament.PrixEchantillon }}"></input>
-                    </div>
-                    <div class="input-field col s4">
-                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="contreIndicationMed{{medicament.id}}" value="{{medicament.ContreIndication}}"></input>
-                    </div>
-                    <div class="input-field col s4">
-                        <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="effetMed{{medicament.id}}" value="{{ medicament.Effet }}"></input>
-                    </div>
-                </div>
-                <div id="divAddComposant"></div>
-                <div class="row center" id="submitMedicament">
-                    <div class="input-field col s12">
-                        <a class="btn waves-effect blue darken-3" href="{{path('modifierMedicament', {'id': 'iddefaut' , 'newNom': 'newNom', 'newFamille' : 'newFamille', 'newPrix' : 'newPrix', 'newContreIndication' : 'newContreIndication' , 'newEffet' : 'newEffet' })}}" id="ALED{{medicament.id}}">
-                            Modifier Medicament
-                            <i class="material-icons right">check</i>
-                        </a>
-                    </div>
+                <div class="input-field col s6 ">
+                    <select id="familleMed{{medicament.id}}" onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);">
+                        {% for famille in familles %}
+                            {% if famille.NomFamille == medicament.famille.NomFamille %}
+                                <option selected>{{ famille.NomFamille}}</option>
+                            {% else %}
+                                <option>{{ famille.NomFamille}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="prixMed{{medicament.id}}" value="{{ medicament.PrixEchantillon }}"></input>
+            </div>
+            <div class="input-field col s4">
+                <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="contreIndicationMed{{medicament.id}}" value="{{medicament.ContreIndication}}"></input>
         </div>
-    {% endfor %}
-{% endblock %}
-{% block _medicaments_Composants_entry_row %}
-    {{ form_widget(form) }}
-{% endblock %}
-{% block _medicaments_Composants_entry_widget %}
-    <div class="form-group" id="block_{{id}}">
-        <div class="row">
-            <div class="col input-field s10">
-                <div class="row">
-                    <div class="col input-field s5">
-                        {{ form_widget(form.composant)}}
-                    </div>
-                    <div class="col input-field s5">
-                        {{ form_widget(form.Quantite)}}
-                        {{ form_label(form.Quantite)}}
-                    </div>
-                </div>
-            </div>
-            <div class="col input-field s2">
-                <button class="btn waves-effect blue darken-3" data-action="delete" data-target="#block_{{id}}">
-                    <i class="material-icons">delete</i>
-                </button>
-            </div>
-        </div>
+        <div class="input-field col s4">
+            <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="effetMed{{medicament.id}}" value="{{ medicament.Effet }}"></input>
     </div>
-{% endblock %}
-{% block _medicaments_Composants_widget %}
-    {{ form_widget(form) }}
-    <div class="form-group">
-        <div class="row center">
-            <button class="btn btn-primary waves-effect blue darken-3" id="add-composant" type="button">Ajouter un Composant<i class="material-icons right">add</i>
-            </button>
-        </div>
+</div>
+<div id="divAddComposant"></div>
+<div class="row center" id="submitMedicament">
+    <div class="input-field col s12">
+        <a class="btn waves-effect blue darken-3" href="{{path('modifierMedicament', {'id': 'iddefaut' , 'newNom': 'newNom', 'newFamille' : 'newFamille', 'newPrix' : 'newPrix', 'newContreIndication' : 'newContreIndication' , 'newEffet' : 'newEffet' })}}" id="ALED{{medicament.id}}" onclick="valid(this);">
+            Modifier Medicament
+            <i class="material-icons right">check</i>
+        </a>
     </div>
-{% endblock %}
+</div></div></div>{% endfor %}{% endblock %}{% block _medicaments_Composants_entry_row %}{{ form_widget(form) }}{% endblock %}{% block _medicaments_Composants_entry_widget %}<div class="form-group" id="block_{{id}}"><div class="row"><div class="col input-field s10">
+<div class="row">
+    <div class="col input-field s5">
+        {{ form_widget(form.composant)}}
+    </div>
+    <div class="col input-field s5">
+        {{ form_widget(form.Quantite)}}
+        {{ form_label(form.Quantite)}}
+    </div>
+</div></div><div class="col input-field s2">
+<button class="btn waves-effect blue darken-3" data-action="delete" data-target="#block_{{id}}">
+    <i class="material-icons">delete</i>
+</button></div></div></div>{% endblock %}{% block _medicaments_Composants_widget %}{{ form_widget(form) }}<div class="form-group"><div class="row center"><button class="btn btn-primary waves-effect blue darken-3" id="add-composant" type="button">Ajouter un Composant<i class="material-icons right">add</i></button></div></div>{% endblock %}

@@ -163,7 +163,7 @@ class MainController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Composant::class);
         $composants = $repo->findall();
-        
+
 
         if (!$composant) {
             $composant = new Composant();
@@ -245,37 +245,42 @@ class MainController extends AbstractController
     /**
      * @Route("/composant/{id}/{newNom}/modifierComposant", name="modifierComposant")
      */
-    public function modifierComposant(Composant $composant, string $newNom) {
-        $manager =$this->getDoctrine()->getManager();
+    public function modifierComposant(Composant $composant, string $newNom)
+    {
+        $manager = $this->getDoctrine()->getManager();
 
         $composant->setNomComposant($newNom);
         $manager->persist($composant);
         $manager->flush();
 
-        return $this->redirectToRoute('composant');        
+        return $this->redirectToRoute('composant');
     }
 
     /**
      * @Route("/famille/{id}/{newNom}/modifierFamille", name="modifierFamille")
      */
-    public function modifierFamille(Famille $famille, string $newNom) {
-        $manager =$this->getDoctrine()->getManager();
+    public function modifierFamille(Famille $famille, string $newNom)
+    {
+        $manager = $this->getDoctrine()->getManager();
 
         $famille->setNomFamille($newNom);
         $manager->persist($famille);
         $manager->flush();
 
-        return $this->redirectToRoute('famille');        
+        return $this->redirectToRoute('famille');
     }
 
     /**
      * @Route("/medicament/{id}/{newNom}/{newFamille}/{newPrix}/{newContreIndication}/{newEffet}/modifierMedicament", name="modifierMedicament")
      */
-    public function modifierMedicament(Medicaments $medicament, $newNom='' , $newFamille='' ,  $newPrix='' ,  $newContreIndication='' , $newEffet='' ) {
-        $manager =$this->getDoctrine()->getManager();
+    public function modifierMedicament(Medicaments $medicament,  $newNom = '', $newFamille = '', Float $newPrix,  $newContreIndication = '', $newEffet = '')
+    {
+        $manager = $this->getDoctrine()->getManager();
 
+        $repo = $this->getDoctrine()->getRepository(Famille::class);
+        $Famille = $repo->findOneBy(array('NomFamille' => $newFamille));
         $medicament->setNomCommercial($newNom);
-        $medicament->setFamille($newFamille);
+        $medicament->setFamille($Famille);
         $medicament->setPrixEchantillon($newPrix);
         $medicament->setContreIndication($newContreIndication);
         $medicament->setEffet($newEffet);
@@ -283,6 +288,6 @@ class MainController extends AbstractController
         $manager->persist($medicament);
         $manager->flush();
 
-        return $this->redirectToRoute('medicament');        
+        return $this->redirectToRoute('medicament');
     }
 }

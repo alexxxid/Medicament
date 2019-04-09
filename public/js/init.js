@@ -1,9 +1,12 @@
 function modifier(id, newnom) {
   if (Array.isArray(newnom)) {
-    // alert(newnom);
+
+    var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("newNom", newnom[0]).replace("newFamille", newnom[1]).replace("newPrix", newnom[2]).replace("newContreIndication", newnom[3]).replace("newEffet", newnom[4]);
+    // C ICI QUE CA MARCHE PAS ALOOEAZLEAZELAZELAZELAZELAZ ALED 
+  } else {
+    var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("newNom", newnom);
   }
-  // alert("ca marche pas ");
-  var temp = $('#ALED' + id).attr("href").replace("iddefaut", id).replace("newNom", newnom);
+
   $('#ALED' + id).attr("href", temp);
 }
 
@@ -17,9 +20,10 @@ function modifier(id, newnom) {
     $('.tabs').tabs();
     $('.dropdown-trigger').dropdown({
       onCloseEnd: function () {
-        var idMed = $(this).siblings("select").attr("id").replace("familleMed", "");
+        var idMed = $(this).siblings("select").id("id");
+        alert(idMed);
         // alert($(this).children(".selected").text());
-        modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
+        modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
 
         alert($(this).focusedIndex);
       }
@@ -28,7 +32,7 @@ function modifier(id, newnom) {
     $(".dropdown-content.select-dropdown").focusout(function () {
       var idMed = $(this).siblings("select").attr("id").replace("familleMed", "");
       // alert($(this).children(".selected").text());
-      modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
+      modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);
     });
     $('ul.tabs').tabs({
       swipeable: true,
