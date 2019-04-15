@@ -78,6 +78,9 @@ class MainController extends AbstractController
         if (!$medicament) {
             $medicament = new Medicaments();
         }
+        // if (!$composer) {
+        //     $composer = new Composer();
+        // }
 
         $formComposant = $this->createForm(ComposantType::class, $composant);
         $formComposant->handleRequest($request);
@@ -102,8 +105,7 @@ class MainController extends AbstractController
             return $this->redirectToRoute('acceuil');
         } else if ($formMedicament->isSubmitted() && $formMedicament->isValid()) {
             $manager->persist($medicament);
-            $manager->flush();
-
+            $manager->$manager->flush();
             return $this->redirectToRoute('acceuil');
         }
 

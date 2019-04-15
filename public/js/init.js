@@ -20,7 +20,7 @@ function modifier(id, newnom) {
     $('.tabs').tabs();
     $('.dropdown-trigger').dropdown({
       onCloseEnd: function () {
-        var idMed = $(this).siblings("select").id("id");
+        var idMed = $(this).siblings("select").attr("id");
         alert(idMed);
         // alert($(this).children(".selected").text());
         modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);

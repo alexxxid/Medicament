@@ -56,12 +56,12 @@ class Medicaments
         $this->composers = new ArrayCollection();
     }
 
-    public function getId(): ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNomCommercial(): ? string
+    public function getNomCommercial(): ?string
     {
         return $this->NomCommercial;
     }
@@ -73,7 +73,7 @@ class Medicaments
         return $this;
     }
 
-    public function getPrixEchantillon(): ? float
+    public function getPrixEchantillon(): ?float
     {
         return $this->PrixEchantillon;
     }
@@ -85,19 +85,19 @@ class Medicaments
         return $this;
     }
 
-    public function getContreIndication(): ? string
+    public function getContreIndication(): ?string
     {
         return $this->ContreIndication;
     }
 
-    public function setContreIndication(? string $ContreIndication): self
+    public function setContreIndication(?string $ContreIndication): self
     {
         $this->ContreIndication = $ContreIndication;
 
         return $this;
     }
 
-    public function getEffet(): ? string
+    public function getEffet(): ?string
     {
         return $this->Effet;
     }
@@ -140,12 +140,12 @@ class Medicaments
         return $this;
     }
 
-    public function getFamille(): ? Famille
+    public function getFamille(): ?Famille
     {
         return $this->famille;
     }
 
-    public function setFamille(? Famille $famille): self
+    public function setFamille(?Famille $famille): self
     {
         $this->famille = $famille;
 
