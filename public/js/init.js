@@ -20,7 +20,8 @@ function modifier(id, newnom) {
     $('.sidenav').sidenav();
     $('.parallax').parallax();
     $('.tabs').tabs();
-    $(".dropdown-trigger").focusout(function () {
+    $('.dropdown-trigger').dropdown();
+    $(".dropdown-content.select-dropdown").focusout(function () {
       var idMed = $(this).siblings("select").attr("id").replace("familleMed", "");
 
       modifier(idMed, [$('#nomMed' + idMed).val(), $('#familleMed' + idMed).val(), $('#prixMed' + idMed).val(), $('#contreIndicationMed' + idMed).val(), $('#effetMed' + idMed).val()]);

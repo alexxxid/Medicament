@@ -80,6 +80,9 @@ class MainController extends AbstractController
             $medicament = new Medicaments();
             $composer = new Composer();
         }
+        // if (!$composer) {
+        //     $composer = new Composer();
+        // }
 
         $formComposant = $this->createForm(ComposantType::class, $composant);
         $formComposant->handleRequest($request);
@@ -107,6 +110,7 @@ class MainController extends AbstractController
 
 
             $manager->persist($medicament);
+<<<<<<< HEAD
             $manager->flush();
 
             $repo = $this->getDoctrine()->getRepository(Medicaments::class);
@@ -124,6 +128,9 @@ class MainController extends AbstractController
 
 
 
+=======
+            $manager->$manager->flush();
+>>>>>>> d5ec7da97d518fedbe59b60ba3f39373c8ad1668
             return $this->redirectToRoute('acceuil');
         }
 
