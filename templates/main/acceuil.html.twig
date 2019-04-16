@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% form_theme formMedicament _self %}
-{% block title %}Gestion Medicaments{% endblock %}
+{% block title %}Gestion Medicaments
+{% endblock %}
 {% block body %}
     <div class="valign-wrapper">
         <div class="row">
@@ -139,6 +140,7 @@
                 <h4 class="center">Ajouter Medicament</h4>
                 {{ form_start(formMedicament) }}
                 <div class="row">
+
                     <div class="input-field col s6">
                         {{ form_widget(formMedicament.NomCommercial) }}
                         {{ form_label(formMedicament.NomCommercial) }}

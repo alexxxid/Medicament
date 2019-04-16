@@ -57,6 +57,7 @@
                             <tr>
                                 <th>idComposant</th>
                                 <th>Nom Composant</th>
+                                <th>Quantité</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,6 +68,7 @@
                                             <tr>
                                                 <td>{{ composant.id }}</td>
                                                 <td>{{ composant.NomComposant }}</td>
+                                                <td>{{ composer.Quantite}}</td>
                                             </tr>
                                         {% endif %}
                                     {% endfor %}
@@ -85,9 +87,12 @@
                 <h4 class="center">Modifier Medicament</h4>
                 <div class="row">
                     <div class="input-field col s6">
+                        <div for="nomMed{{medicament.id}}">Nom Commercial</div>
+
                         <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="nomMed{{medicament.id}}" value="{{ medicament.NomCommercial }}"></input>
                 </div>
                 <div class="input-field col s6 ">
+                    <div for="familleMed{{medicament.id}}">Famille</div>
                     <select id="familleMed{{medicament.id}}" onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);">
                         {% for famille in familles %}
                             {% if famille.NomFamille == medicament.famille.NomFamille %}
@@ -101,12 +106,15 @@
             </div>
             <div class="row">
                 <div class="input-field col s4">
+                    <div for="prixMed{{medicament.id}}">Prix</div>
                     <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="prixMed{{medicament.id}}" value="{{ medicament.PrixEchantillon }}"></input>
             </div>
             <div class="input-field col s4">
+                <div for="contreIndicationMed{{medicament.id}}">Contre indication</div>
                 <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="contreIndicationMed{{medicament.id}}" value="{{medicament.ContreIndication}}"></input>
         </div>
         <div class="input-field col s4">
+            <div for="effetMed{{medicament.id}}">Effet</div>
             <input onfocusout="modifier({{ medicament.id}},[$('#nomMed{{medicament.id}}').val(),$('#familleMed{{medicament.id}}').val() , $('#prixMed{{medicament.id}}').val(),$('#contreIndicationMed{{medicament.id}}').val(),$('#effetMed{{medicament.id}}').val()]);" id="effetMed{{medicament.id}}" value="{{ medicament.Effet }}"></input>
     </div>
 </div>

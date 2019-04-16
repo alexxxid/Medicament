@@ -23,7 +23,7 @@ class Composer
     private $Quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Medicaments", inversedBy="composant")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medicaments", inversedBy="composers")
      */
     private $medicament;
 
@@ -33,12 +33,12 @@ class Composer
      */
     private $composant;
 
-    public function getId(): ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getQuantite(): ? int
+    public function getQuantite(): ?int
     {
         return $this->Quantite;
     }
@@ -50,24 +50,24 @@ class Composer
         return $this;
     }
 
-    public function getMedicament(): ? Medicaments
+    public function getMedicament(): ?Medicaments
     {
         return $this->medicament;
     }
 
-    public function setMedicament(? Medicaments $medicament): self
+    public function setMedicament(?Medicaments $medicament): self
     {
         $this->medicament = $medicament;
 
         return $this;
     }
 
-    public function getComposant(): ? Composant
+    public function getComposant(): ?Composant
     {
         return $this->composant;
     }
 
-    public function setComposant(? Composant $Composant): self
+    public function setComposant(?Composant $Composant): self
     {
         $this->composant = $Composant;
 

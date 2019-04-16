@@ -15,7 +15,6 @@ class ComposerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
             ->add('composant', EntityType::class, array(
                 'class' => Composant::class,
                 'choice_label' => 'NomComposant',
@@ -29,7 +28,7 @@ class ComposerType extends AbstractType
                 'attr' => [
                     'type' => 'number'
                 ],
-                
+
             ]);
     }
 

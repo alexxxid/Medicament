@@ -64,6 +64,7 @@ class MainController extends AbstractController
         $medicaments = $repo->findAll();
         $nbmedicaments = count($medicaments);
 
+
         $repo = $this->getDoctrine()->getRepository(Composant::class);
         $composants = $repo->findall();
         $nbcomposants = count($composants);
@@ -77,6 +78,7 @@ class MainController extends AbstractController
         }
         if (!$medicament) {
             $medicament = new Medicaments();
+            $composer = new Composer();
         }
 
         $formComposant = $this->createForm(ComposantType::class, $composant);
@@ -101,11 +103,31 @@ class MainController extends AbstractController
 
             return $this->redirectToRoute('acceuil');
         } else if ($formMedicament->isSubmitted() && $formMedicament->isValid()) {
+
+
+
             $manager->persist($medicament);
             $manager->flush();
 
+            $repo = $this->getDoctrine()->getRepository(Medicaments::class);
+            $lastMed = $repo->findOneBy(array(), array('id' => 'desc'));
+            $repo = $this->getDoctrine()->getRepository(Composer::class);
+            $allComposers = $repo->findAll();
+            foreach ($allComposers as $unComposer) {
+                if ($unComposer->getMedicament() == null) {
+                    $lastMed->composers[] = $unComposer;
+                    $unComposer->setMedicament($lastMed);
+                    $manager->persist($unComposer);
+                    $manager->flush();
+                }
+            }
+
+
+
             return $this->redirectToRoute('acceuil');
         }
+
+
 
         return $this->render('main/acceuil.html.twig', [
             'formComposant' => $formComposant->createView(),
@@ -117,6 +139,7 @@ class MainController extends AbstractController
             'nbmedicaments' => $nbmedicaments,
             'composants' => $composants,
             'nbcomposants' => $nbcomposants
+
         ]);
     }
 
